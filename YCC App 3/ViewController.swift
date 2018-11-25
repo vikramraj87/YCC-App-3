@@ -7,21 +7,38 @@
 //
 
 import Cocoa
+import Vision
+
+
+
 
 class ViewController: NSViewController {
-
+    // MARK:- Outlets
+    @IBOutlet weak var imageView: NSImageView!
+    @IBOutlet weak var annotationView: AnnotationView!
+    
+    var textDetector = ImageTextDetector()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        annotationView.imageView = imageView
+        textDetector.delegate = self
     }
 
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
+    @IBAction func detectText(_ sender: Any) {
+        guard let image = imageView.image else {
+            print("No image loaded to detect text.")
+            return
         }
+        
+        textDetector.detectText(in: image)
     }
+}
 
-
+extension ViewController: ImageTextDetectorDelegate {
+    func textDetected(_ observations: [VNTextObservation]) {
+        annotationView.textObservations = observations
+    }
 }
 

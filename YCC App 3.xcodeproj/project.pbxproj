@@ -12,6 +12,13 @@
 		AC48BF8C219FA69F00CA1B1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC48BF8B219FA69F00CA1B1F /* Assets.xcassets */; };
 		AC48BF8F219FA69F00CA1B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC48BF8D219FA69F00CA1B1F /* Main.storyboard */; };
 		AC48BF9B219FA6A000CA1B1F /* YCC_App_3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF9A219FA6A000CA1B1F /* YCC_App_3Tests.swift */; };
+		ACEAAAF721A776930040F09A /* jewel1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = ACEAAAF621A776920040F09A /* jewel1.jpeg */; };
+		ACEAAAF921A776A00040F09A /* jewel2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = ACEAAAF821A776A00040F09A /* jewel2.jpeg */; };
+		ACEAAAFB21A77C960040F09A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAAFA21A77C960040F09A /* AnnotationView.swift */; };
+		ACEAAAFE21A8E9A40040F09A /* NSImageView+imageFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAAFD21A8E9A40040F09A /* NSImageView+imageFrame.swift */; };
+		ACEAAB0021A8EA7B0040F09A /* NSSize+aspectRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAAFF21A8EA7B0040F09A /* NSSize+aspectRatio.swift */; };
+		ACEAAB0221A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAB0121A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift */; };
+		ACEAAB0521AA8DA10040F09A /* ImageTextDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAB0421AA8DA10040F09A /* ImageTextDetector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +42,15 @@
 		AC48BF96219FA6A000CA1B1F /* YCC App 3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "YCC App 3Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC48BF9A219FA6A000CA1B1F /* YCC_App_3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCC_App_3Tests.swift; sourceTree = "<group>"; };
 		AC48BF9C219FA6A000CA1B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC48BFA5219FA6D700CA1B1F /* Ideas.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Ideas.md; sourceTree = "<group>"; };
+		AC48BFA6219FA76F00CA1B1F /* Backend.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Backend.md; sourceTree = "<group>"; };
+		ACEAAAF621A776920040F09A /* jewel1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jewel1.jpeg; sourceTree = "<group>"; };
+		ACEAAAF821A776A00040F09A /* jewel2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jewel2.jpeg; sourceTree = "<group>"; };
+		ACEAAAFA21A77C960040F09A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
+		ACEAAAFD21A8E9A40040F09A /* NSImageView+imageFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+imageFrame.swift"; sourceTree = "<group>"; };
+		ACEAAAFF21A8EA7B0040F09A /* NSSize+aspectRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSize+aspectRatio.swift"; sourceTree = "<group>"; };
+		ACEAAB0121A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNTextObservation+boundingBoxScaled.swift"; sourceTree = "<group>"; };
+		ACEAAB0421AA8DA10040F09A /* ImageTextDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextDetector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,12 +92,19 @@
 		AC48BF86219FA69500CA1B1F /* YCC App 3 */ = {
 			isa = PBXGroup;
 			children = (
+				ACEAAB0321AA8AD00040F09A /* Models */,
+				ACEAAB0621AA8E850040F09A /* Views */,
+				ACEAAAFC21A8E97F0040F09A /* Extensions */,
 				AC48BF87219FA69500CA1B1F /* AppDelegate.swift */,
 				AC48BF89219FA69500CA1B1F /* ViewController.swift */,
 				AC48BF8B219FA69F00CA1B1F /* Assets.xcassets */,
+				ACEAAAF621A776920040F09A /* jewel1.jpeg */,
+				ACEAAAF821A776A00040F09A /* jewel2.jpeg */,
 				AC48BF8D219FA69F00CA1B1F /* Main.storyboard */,
 				AC48BF90219FA69F00CA1B1F /* Info.plist */,
 				AC48BF91219FA69F00CA1B1F /* YCC_App_3.entitlements */,
+				AC48BFA5219FA6D700CA1B1F /* Ideas.md */,
+				AC48BFA6219FA76F00CA1B1F /* Backend.md */,
 			);
 			path = "YCC App 3";
 			sourceTree = "<group>";
@@ -93,6 +116,32 @@
 				AC48BF9C219FA6A000CA1B1F /* Info.plist */,
 			);
 			path = "YCC App 3Tests";
+			sourceTree = "<group>";
+		};
+		ACEAAAFC21A8E97F0040F09A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ACEAAAFD21A8E9A40040F09A /* NSImageView+imageFrame.swift */,
+				ACEAAAFF21A8EA7B0040F09A /* NSSize+aspectRatio.swift */,
+				ACEAAB0121A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ACEAAB0321AA8AD00040F09A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ACEAAB0421AA8DA10040F09A /* ImageTextDetector.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ACEAAB0621AA8E850040F09A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ACEAAAFA21A77C960040F09A /* AnnotationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +225,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACEAAAF921A776A00040F09A /* jewel2.jpeg in Resources */,
+				ACEAAAF721A776930040F09A /* jewel1.jpeg in Resources */,
 				AC48BF8C219FA69F00CA1B1F /* Assets.xcassets in Resources */,
 				AC48BF8F219FA69F00CA1B1F /* Main.storyboard in Resources */,
 			);
@@ -196,7 +247,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC48BF8A219FA69500CA1B1F /* ViewController.swift in Sources */,
+				ACEAAAFB21A77C960040F09A /* AnnotationView.swift in Sources */,
 				AC48BF88219FA69500CA1B1F /* AppDelegate.swift in Sources */,
+				ACEAAB0021A8EA7B0040F09A /* NSSize+aspectRatio.swift in Sources */,
+				ACEAAAFE21A8E9A40040F09A /* NSImageView+imageFrame.swift in Sources */,
+				ACEAAB0221A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift in Sources */,
+				ACEAAB0521AA8DA10040F09A /* ImageTextDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

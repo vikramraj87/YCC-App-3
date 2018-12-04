@@ -7,11 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15276BCD2C7AF1FC3B311F1B /* Pods_YCC_App_3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E2D3C3824BF4DEF06B854E /* Pods_YCC_App_3Tests.framework */; };
+		9A34887D492D4D48A814F7A7 /* Pods_YCC_App_3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34C12A6953E1645AD86A007 /* Pods_YCC_App_3.framework */; };
+		AC14EE8421B610850013E811 /* ImageResizeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14EE8321B610850013E811 /* ImageResizeOperation.swift */; };
+		AC14EE8621B610A80013E811 /* CodeRemovalOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14EE8521B610A80013E811 /* CodeRemovalOperation.swift */; };
 		AC48BF88219FA69500CA1B1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF87219FA69500CA1B1F /* AppDelegate.swift */; };
 		AC48BF8A219FA69500CA1B1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF89219FA69500CA1B1F /* ViewController.swift */; };
 		AC48BF8C219FA69F00CA1B1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC48BF8B219FA69F00CA1B1F /* Assets.xcassets */; };
 		AC48BF8F219FA69F00CA1B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC48BF8D219FA69F00CA1B1F /* Main.storyboard */; };
 		AC48BF9B219FA6A000CA1B1F /* YCC_App_3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF9A219FA6A000CA1B1F /* YCC_App_3Tests.swift */; };
+		AC6FBF3321AADDA30043F92B /* JewelImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FBF3221AADDA30043F92B /* JewelImageProtocol.swift */; };
+		ACBC861821AE30D4001C1ED6 /* ImageFilesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC861721AE30D4001C1ED6 /* ImageFilesLoader.swift */; };
+		ACBC861C21AE3756001C1ED6 /* JewelImageStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC861B21AE3756001C1ED6 /* JewelImageStripViewController.swift */; };
+		ACBC861E21AE378A001C1ED6 /* JewelImageImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC861D21AE378A001C1ED6 /* JewelImageImportViewController.swift */; };
+		ACBC862021AE37A7001C1ED6 /* JewelImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC861F21AE37A7001C1ED6 /* JewelImageDetailsViewController.swift */; };
+		ACBC862321AE37CC001C1ED6 /* JewelImageStripViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC862121AE37CC001C1ED6 /* JewelImageStripViewItem.swift */; };
+		ACBC862421AE37CC001C1ED6 /* JewelImageStripViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBC862221AE37CC001C1ED6 /* JewelImageStripViewItem.xib */; };
+		ACBC862621AE3800001C1ED6 /* NSNib+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC862521AE3800001C1ED6 /* NSNib+Names.swift */; };
+		ACBC862821AE381A001C1ED6 /* NSUserInterfaceIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC862721AE381A001C1ED6 /* NSUserInterfaceIdentifiers.swift */; };
+		ACBC862C21AEEEC8001C1ED6 /* FileManager+contentsOfFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC862B21AEEEC8001C1ED6 /* FileManager+contentsOfFolder.swift */; };
+		ACBC862F21AF6623001C1ED6 /* JewelImport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACBC862D21AF6623001C1ED6 /* JewelImport.storyboard */; };
+		ACBC863221AF67E6001C1ED6 /* NSStoryboard+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC863121AF67E6001C1ED6 /* NSStoryboard+Names.swift */; };
+		ACBC863421AF731E001C1ED6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC863321AF731E001C1ED6 /* Constants.swift */; };
+		ACBC863621B0C971001C1ED6 /* ImageDownSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC863521B0C971001C1ED6 /* ImageDownSampler.swift */; };
 		ACEAAAF721A776930040F09A /* jewel1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = ACEAAAF621A776920040F09A /* jewel1.jpeg */; };
 		ACEAAAF921A776A00040F09A /* jewel2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = ACEAAAF821A776A00040F09A /* jewel2.jpeg */; };
 		ACEAAAFB21A77C960040F09A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAAFA21A77C960040F09A /* AnnotationView.swift */; };
@@ -19,6 +37,10 @@
 		ACEAAB0021A8EA7B0040F09A /* NSSize+aspectRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAAFF21A8EA7B0040F09A /* NSSize+aspectRatio.swift */; };
 		ACEAAB0221A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAB0121A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift */; };
 		ACEAAB0521AA8DA10040F09A /* ImageTextDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAB0421AA8DA10040F09A /* ImageTextDetector.swift */; };
+		ACFA0FED21B40FEE0010F400 /* CodeRemovalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA0FEC21B40FEE0010F400 /* CodeRemovalService.swift */; };
+		ACFA0FF021B434F00010F400 /* VNTextObservationCollection+Encoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA0FEF21B434F00010F400 /* VNTextObservationCollection+Encoded.swift */; };
+		ACFA0FF221B4354A0010F400 /* CGRect+Encoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA0FF121B4354A0010F400 /* CGRect+Encoded.swift */; };
+		ACFA0FF421B436F70010F400 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA0FF321B436F70010F400 /* AsyncOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +54,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1778AC34788F8D2ED889ADF2 /* Pods-YCC App 3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCC App 3.release.xcconfig"; path = "Pods/Target Support Files/Pods-YCC App 3/Pods-YCC App 3.release.xcconfig"; sourceTree = "<group>"; };
+		4D8BE4A892391AC109D826DB /* Pods-YCC App 3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCC App 3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCC App 3/Pods-YCC App 3.debug.xcconfig"; sourceTree = "<group>"; };
+		581419B630B82E9B81C2565A /* Pods-YCC App 3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCC App 3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YCC App 3Tests/Pods-YCC App 3Tests.release.xcconfig"; sourceTree = "<group>"; };
+		82E2D3C3824BF4DEF06B854E /* Pods_YCC_App_3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YCC_App_3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC14EE8321B610850013E811 /* ImageResizeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizeOperation.swift; sourceTree = "<group>"; };
+		AC14EE8521B610A80013E811 /* CodeRemovalOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRemovalOperation.swift; sourceTree = "<group>"; };
 		AC48BF84219FA69500CA1B1F /* YCC App 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YCC App 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC48BF87219FA69500CA1B1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC48BF89219FA69500CA1B1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +72,20 @@
 		AC48BF9C219FA6A000CA1B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC48BFA5219FA6D700CA1B1F /* Ideas.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Ideas.md; sourceTree = "<group>"; };
 		AC48BFA6219FA76F00CA1B1F /* Backend.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Backend.md; sourceTree = "<group>"; };
+		AC6FBF3221AADDA30043F92B /* JewelImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageProtocol.swift; sourceTree = "<group>"; };
+		ACBC861721AE30D4001C1ED6 /* ImageFilesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilesLoader.swift; sourceTree = "<group>"; };
+		ACBC861B21AE3756001C1ED6 /* JewelImageStripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageStripViewController.swift; sourceTree = "<group>"; };
+		ACBC861D21AE378A001C1ED6 /* JewelImageImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageImportViewController.swift; sourceTree = "<group>"; };
+		ACBC861F21AE37A7001C1ED6 /* JewelImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageDetailsViewController.swift; sourceTree = "<group>"; };
+		ACBC862121AE37CC001C1ED6 /* JewelImageStripViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageStripViewItem.swift; sourceTree = "<group>"; };
+		ACBC862221AE37CC001C1ED6 /* JewelImageStripViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JewelImageStripViewItem.xib; sourceTree = "<group>"; };
+		ACBC862521AE3800001C1ED6 /* NSNib+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNib+Names.swift"; sourceTree = "<group>"; };
+		ACBC862721AE381A001C1ED6 /* NSUserInterfaceIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUserInterfaceIdentifiers.swift; sourceTree = "<group>"; };
+		ACBC862B21AEEEC8001C1ED6 /* FileManager+contentsOfFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+contentsOfFolder.swift"; sourceTree = "<group>"; };
+		ACBC862E21AF6623001C1ED6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "YCC App 3/Base.lproj/JewelImport.storyboard"; sourceTree = "<group>"; };
+		ACBC863121AF67E6001C1ED6 /* NSStoryboard+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStoryboard+Names.swift"; sourceTree = "<group>"; };
+		ACBC863321AF731E001C1ED6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ACBC863521B0C971001C1ED6 /* ImageDownSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownSampler.swift; sourceTree = "<group>"; };
 		ACEAAAF621A776920040F09A /* jewel1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jewel1.jpeg; sourceTree = "<group>"; };
 		ACEAAAF821A776A00040F09A /* jewel2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jewel2.jpeg; sourceTree = "<group>"; };
 		ACEAAAFA21A77C960040F09A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
@@ -51,6 +93,12 @@
 		ACEAAAFF21A8EA7B0040F09A /* NSSize+aspectRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSize+aspectRatio.swift"; sourceTree = "<group>"; };
 		ACEAAB0121A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNTextObservation+boundingBoxScaled.swift"; sourceTree = "<group>"; };
 		ACEAAB0421AA8DA10040F09A /* ImageTextDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextDetector.swift; sourceTree = "<group>"; };
+		ACFA0FEC21B40FEE0010F400 /* CodeRemovalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRemovalService.swift; sourceTree = "<group>"; };
+		ACFA0FEF21B434F00010F400 /* VNTextObservationCollection+Encoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNTextObservationCollection+Encoded.swift"; sourceTree = "<group>"; };
+		ACFA0FF121B4354A0010F400 /* CGRect+Encoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Encoded.swift"; sourceTree = "<group>"; };
+		ACFA0FF321B436F70010F400 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		DAD7A83D79CAB580C97B185B /* Pods-YCC App 3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCC App 3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCC App 3Tests/Pods-YCC App 3Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		E34C12A6953E1645AD86A007 /* Pods_YCC_App_3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YCC_App_3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A34887D492D4D48A814F7A7 /* Pods_YCC_App_3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15276BCD2C7AF1FC3B311F1B /* Pods_YCC_App_3Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +127,8 @@
 				AC48BF86219FA69500CA1B1F /* YCC App 3 */,
 				AC48BF99219FA6A000CA1B1F /* YCC App 3Tests */,
 				AC48BF85219FA69500CA1B1F /* Products */,
+				CA8506EBFE20D6504858E628 /* Pods */,
+				BBD216DA7656073BAA9FCD3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +144,10 @@
 		AC48BF86219FA69500CA1B1F /* YCC App 3 */ = {
 			isa = PBXGroup;
 			children = (
+				ACFA0FEE21B434690010F400 /* Operations */,
+				ACFA0FEB21B40FD40010F400 /* Services */,
+				ACBC863321AF731E001C1ED6 /* Constants.swift */,
+				AC54155821AB0468003C8812 /* Controllers */,
 				ACEAAB0321AA8AD00040F09A /* Models */,
 				ACEAAB0621AA8E850040F09A /* Views */,
 				ACEAAAFC21A8E97F0040F09A /* Extensions */,
@@ -100,7 +156,7 @@
 				AC48BF8B219FA69F00CA1B1F /* Assets.xcassets */,
 				ACEAAAF621A776920040F09A /* jewel1.jpeg */,
 				ACEAAAF821A776A00040F09A /* jewel2.jpeg */,
-				AC48BF8D219FA69F00CA1B1F /* Main.storyboard */,
+				ACBC863021AF67A8001C1ED6 /* Storyboards */,
 				AC48BF90219FA69F00CA1B1F /* Info.plist */,
 				AC48BF91219FA69F00CA1B1F /* YCC_App_3.entitlements */,
 				AC48BFA5219FA6D700CA1B1F /* Ideas.md */,
@@ -118,12 +174,37 @@
 			path = "YCC App 3Tests";
 			sourceTree = "<group>";
 		};
+		AC54155821AB0468003C8812 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ACBC861B21AE3756001C1ED6 /* JewelImageStripViewController.swift */,
+				ACBC861D21AE378A001C1ED6 /* JewelImageImportViewController.swift */,
+				ACBC861F21AE37A7001C1ED6 /* JewelImageDetailsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ACBC863021AF67A8001C1ED6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AC48BF8D219FA69F00CA1B1F /* Main.storyboard */,
+				ACBC862D21AF6623001C1ED6 /* JewelImport.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		ACEAAAFC21A8E97F0040F09A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				ACEAAAFD21A8E9A40040F09A /* NSImageView+imageFrame.swift */,
 				ACEAAAFF21A8EA7B0040F09A /* NSSize+aspectRatio.swift */,
 				ACEAAB0121A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift */,
+				ACBC862521AE3800001C1ED6 /* NSNib+Names.swift */,
+				ACBC862721AE381A001C1ED6 /* NSUserInterfaceIdentifiers.swift */,
+				ACBC862B21AEEEC8001C1ED6 /* FileManager+contentsOfFolder.swift */,
+				ACBC863121AF67E6001C1ED6 /* NSStoryboard+Names.swift */,
+				ACFA0FEF21B434F00010F400 /* VNTextObservationCollection+Encoded.swift */,
+				ACFA0FF121B4354A0010F400 /* CGRect+Encoded.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -132,6 +213,9 @@
 			isa = PBXGroup;
 			children = (
 				ACEAAB0421AA8DA10040F09A /* ImageTextDetector.swift */,
+				AC6FBF3221AADDA30043F92B /* JewelImageProtocol.swift */,
+				ACBC861721AE30D4001C1ED6 /* ImageFilesLoader.swift */,
+				ACBC863521B0C971001C1ED6 /* ImageDownSampler.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -140,8 +224,48 @@
 			isa = PBXGroup;
 			children = (
 				ACEAAAFA21A77C960040F09A /* AnnotationView.swift */,
+				ACBC862121AE37CC001C1ED6 /* JewelImageStripViewItem.swift */,
+				ACBC862221AE37CC001C1ED6 /* JewelImageStripViewItem.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		ACFA0FEB21B40FD40010F400 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ACFA0FEC21B40FEE0010F400 /* CodeRemovalService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ACFA0FEE21B434690010F400 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				ACFA0FF321B436F70010F400 /* AsyncOperation.swift */,
+				AC14EE8321B610850013E811 /* ImageResizeOperation.swift */,
+				AC14EE8521B610A80013E811 /* CodeRemovalOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		BBD216DA7656073BAA9FCD3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E34C12A6953E1645AD86A007 /* Pods_YCC_App_3.framework */,
+				82E2D3C3824BF4DEF06B854E /* Pods_YCC_App_3Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA8506EBFE20D6504858E628 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D8BE4A892391AC109D826DB /* Pods-YCC App 3.debug.xcconfig */,
+				1778AC34788F8D2ED889ADF2 /* Pods-YCC App 3.release.xcconfig */,
+				DAD7A83D79CAB580C97B185B /* Pods-YCC App 3Tests.debug.xcconfig */,
+				581419B630B82E9B81C2565A /* Pods-YCC App 3Tests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +275,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC48BF9F219FA6A000CA1B1F /* Build configuration list for PBXNativeTarget "YCC App 3" */;
 			buildPhases = (
+				46A1EB679970B4891C2CB4BC /* [CP] Check Pods Manifest.lock */,
 				AC48BF80219FA69500CA1B1F /* Sources */,
 				AC48BF81219FA69500CA1B1F /* Frameworks */,
 				AC48BF82219FA69500CA1B1F /* Resources */,
+				B1A99A3B6EF6D8966944BF72 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -168,6 +294,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC48BFA2219FA6A000CA1B1F /* Build configuration list for PBXNativeTarget "YCC App 3Tests" */;
 			buildPhases = (
+				19FC948F5A92B15DD5028D5E /* [CP] Check Pods Manifest.lock */,
 				AC48BF92219FA6A000CA1B1F /* Sources */,
 				AC48BF93219FA6A000CA1B1F /* Frameworks */,
 				AC48BF94219FA6A000CA1B1F /* Resources */,
@@ -194,6 +321,11 @@
 				TargetAttributes = {
 					AC48BF83219FA69500CA1B1F = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					AC48BF95219FA6A000CA1B1F = {
 						CreatedOnToolsVersion = 10.1;
@@ -228,7 +360,9 @@
 				ACEAAAF921A776A00040F09A /* jewel2.jpeg in Resources */,
 				ACEAAAF721A776930040F09A /* jewel1.jpeg in Resources */,
 				AC48BF8C219FA69F00CA1B1F /* Assets.xcassets in Resources */,
+				ACBC862F21AF6623001C1ED6 /* JewelImport.storyboard in Resources */,
 				AC48BF8F219FA69F00CA1B1F /* Main.storyboard in Resources */,
+				ACBC862421AE37CC001C1ED6 /* JewelImageStripViewItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,18 +375,105 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		19FC948F5A92B15DD5028D5E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YCC App 3Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46A1EB679970B4891C2CB4BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YCC App 3-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1A99A3B6EF6D8966944BF72 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YCC App 3/Pods-YCC App 3-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YCC App 3/Pods-YCC App 3-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AC48BF80219FA69500CA1B1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AC48BF8A219FA69500CA1B1F /* ViewController.swift in Sources */,
+				ACBC863421AF731E001C1ED6 /* Constants.swift in Sources */,
 				ACEAAAFB21A77C960040F09A /* AnnotationView.swift in Sources */,
+				ACFA0FF021B434F00010F400 /* VNTextObservationCollection+Encoded.swift in Sources */,
 				AC48BF88219FA69500CA1B1F /* AppDelegate.swift in Sources */,
+				ACBC861C21AE3756001C1ED6 /* JewelImageStripViewController.swift in Sources */,
+				ACBC863221AF67E6001C1ED6 /* NSStoryboard+Names.swift in Sources */,
+				ACBC862621AE3800001C1ED6 /* NSNib+Names.swift in Sources */,
+				ACBC862C21AEEEC8001C1ED6 /* FileManager+contentsOfFolder.swift in Sources */,
+				ACBC862321AE37CC001C1ED6 /* JewelImageStripViewItem.swift in Sources */,
+				ACFA0FED21B40FEE0010F400 /* CodeRemovalService.swift in Sources */,
+				ACFA0FF421B436F70010F400 /* AsyncOperation.swift in Sources */,
+				ACBC862021AE37A7001C1ED6 /* JewelImageDetailsViewController.swift in Sources */,
+				ACFA0FF221B4354A0010F400 /* CGRect+Encoded.swift in Sources */,
 				ACEAAB0021A8EA7B0040F09A /* NSSize+aspectRatio.swift in Sources */,
+				ACBC862821AE381A001C1ED6 /* NSUserInterfaceIdentifiers.swift in Sources */,
 				ACEAAAFE21A8E9A40040F09A /* NSImageView+imageFrame.swift in Sources */,
+				ACBC861821AE30D4001C1ED6 /* ImageFilesLoader.swift in Sources */,
 				ACEAAB0221A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift in Sources */,
+				AC14EE8421B610850013E811 /* ImageResizeOperation.swift in Sources */,
+				ACBC861E21AE378A001C1ED6 /* JewelImageImportViewController.swift in Sources */,
+				ACBC863621B0C971001C1ED6 /* ImageDownSampler.swift in Sources */,
+				AC14EE8621B610A80013E811 /* CodeRemovalOperation.swift in Sources */,
 				ACEAAB0521AA8DA10040F09A /* ImageTextDetector.swift in Sources */,
+				AC6FBF3321AADDA30043F92B /* JewelImageProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +502,14 @@
 				AC48BF8E219FA69F00CA1B1F /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ACBC862D21AF6623001C1ED6 /* JewelImport.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ACBC862E21AF6623001C1ED6 /* Base */,
+			);
+			name = JewelImport.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -403,11 +632,13 @@
 		};
 		AC48BFA0219FA6A000CA1B1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D8BE4A892391AC109D826DB /* Pods-YCC App 3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "YCC App 3/YCC_App_3.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 35M88484KX;
 				INFOPLIST_FILE = "YCC App 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -415,17 +646,20 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kivi.YCC-App-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		AC48BFA1219FA6A000CA1B1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1778AC34788F8D2ED889ADF2 /* Pods-YCC App 3.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "YCC App 3/YCC_App_3.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 35M88484KX;
 				INFOPLIST_FILE = "YCC App 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -433,12 +667,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kivi.YCC-App-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
 		AC48BFA3219FA6A000CA1B1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAD7A83D79CAB580C97B185B /* Pods-YCC App 3Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -459,6 +695,7 @@
 		};
 		AC48BFA4219FA6A000CA1B1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 581419B630B82E9B81C2565A /* Pods-YCC App 3Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

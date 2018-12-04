@@ -23,7 +23,7 @@ class AnnotationView: NSView {
     }
     
     var boundingBoxes: [CGRect] = []
-    var imageView: NSImageView?
+    var imageView: NSImageView? 
     weak var delegate: AnnotationViewDelegate?
     
     override init(frame frameRect: NSRect) {
@@ -65,7 +65,7 @@ class AnnotationView: NSView {
     }
     
     
-    func annotateObservations(_ observations: [VNTextObservation], inImageFrame imageFrame: CGRect) {
+    fileprivate func annotateObservations(_ observations: [VNTextObservation], inImageFrame imageFrame: CGRect) {
         for observation in observations {
             let boundingBox = observation.boundingBoxScaled(to: imageFrame.size, shiftedBy: imageFrame.origin)
             boundingBoxes.append(boundingBox)

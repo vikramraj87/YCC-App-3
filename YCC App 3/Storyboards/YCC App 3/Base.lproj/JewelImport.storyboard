@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="koL-93-D84">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="JG6-UQ-owF">
+            <objects>
+                <windowController storyboardIdentifier="JewelImportWindowController" id="koL-93-D84" sceneMemberID="viewController">
+                    <window key="window" title="Import Jewels" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="smg-iZ-c44">
+                        <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                        <toolbar key="toolbar" implicitIdentifier="E20B2D39-634E-40CA-BA63-D5ABF98886A1" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="M7Z-e3-Mbs">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="CtJ-1T-f3b"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="z4e-6j-IKD"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="MtJ-4I-oDP"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="64q-Ld-kxI"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fvP-4W-cj0"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="CtJ-1T-f3b"/>
+                                <toolbarItem reference="z4e-6j-IKD"/>
+                                <toolbarItem reference="fvP-4W-cj0"/>
+                                <toolbarItem reference="MtJ-4I-oDP"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="koL-93-D84" id="fRD-Ja-xjj"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="u9M-wZ-PWQ" kind="relationship" relationship="window.shadowedContentViewController" id="Td2-FY-N3y"/>
+                    </connections>
+                </windowController>
+                <customObject id="kFc-lX-UAa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-341" y="-1"/>
+        </scene>
+        <!--Jewel Image Import View Controller-->
+        <scene sceneID="Xyv-0a-dqz">
+            <objects>
+                <splitViewController id="u9M-wZ-PWQ" customClass="JewelImageImportViewController" customModule="YCC_App_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem id="NGA-Eg-3LH"/>
+                        <splitViewItem id="oBa-q5-enk"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="BWA-Eu-ghV">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="u9M-wZ-PWQ" id="utE-aZ-PEm"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="BWA-Eu-ghV" id="QcF-Jk-qqX"/>
+                        <segue destination="ZVf-zB-gTE" kind="relationship" relationship="splitItems" id="JFz-bT-aqP"/>
+                        <segue destination="AsU-SH-MNM" kind="relationship" relationship="splitItems" id="Pnu-0d-Xsq"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="9gy-St-HWv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-341" y="480"/>
+        </scene>
+        <!--Jewel Image Strip View Controller-->
+        <scene sceneID="cdU-aT-GMF">
+            <objects>
+                <viewController id="ZVf-zB-gTE" customClass="JewelImageStripViewController" customModule="YCC_App_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" misplaced="YES" id="58Z-PA-FfO">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejg-uH-3zi">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="300"/>
+                                <clipView key="contentView" id="UX5-T4-5xh">
+                                    <rect key="frame" x="1" y="1" width="278" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView selectable="YES" allowsEmptySelection="NO" id="jNV-B7-zEi">
+                                            <rect key="frame" x="0.0" y="0.0" width="278" height="298"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="zpY-Tg-k4V">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </collectionView>
+                                    </subviews>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="TJI-gw-DHv"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="cMh-dn-TXV"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="7jd-LN-Y0V">
+                                    <rect key="frame" x="-100" y="-100" width="198" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ZBV-p4-mZf">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ejg-uH-3zi" firstAttribute="leading" secondItem="58Z-PA-FfO" secondAttribute="leading" id="7dZ-vV-gzt"/>
+                            <constraint firstAttribute="trailing" secondItem="ejg-uH-3zi" secondAttribute="trailing" id="LBY-FD-EoL"/>
+                            <constraint firstItem="ejg-uH-3zi" firstAttribute="top" secondItem="58Z-PA-FfO" secondAttribute="top" id="MbZ-eO-sM8"/>
+                            <constraint firstAttribute="bottom" secondItem="ejg-uH-3zi" secondAttribute="bottom" id="jpI-Se-kRW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="jNV-B7-zEi" id="Ozn-Lw-oGU"/>
+                    </connections>
+                </viewController>
+                <customObject id="D5i-Jt-SEz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-585" y="996"/>
+        </scene>
+        <!--Jewel Image Details View Controller-->
+        <scene sceneID="1pF-Bk-d4W">
+            <objects>
+                <viewController id="AsU-SH-MNM" customClass="JewelImageDetailsViewController" customModule="YCC_App_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" misplaced="YES" id="D45-Ot-f8a">
+                        <rect key="frame" x="0.0" y="0.0" width="1438" height="904"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qm2-O1-SUl">
+                                <rect key="frame" x="16" y="16" width="1406" height="951"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZdD-Bx-8gJ">
+                                        <rect key="frame" x="0.0" y="76" width="600" height="800"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ZdD-Bx-8gJ" secondAttribute="height" multiplier="3:4" id="ViC-4H-qED"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="zIc-1D-Kug"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="jewel1" id="RC8-l5-9VX"/>
+                                    </imageView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="19" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zak-NC-P1n">
+                                        <rect key="frame" x="633" y="403" width="140" height="145"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sqv-Cq-RPZ">
+                                                <rect key="frame" x="0.0" y="123" width="140" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="N3N-p1-stm"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Dealer Code" drawsBackground="YES" id="a8s-cF-Boi">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bk9-gq-Adf">
+                                                <rect key="frame" x="0.0" y="82" width="140" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Multiplier" drawsBackground="YES" id="GHb-ff-Dc0">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZxJ-6C-X2M">
+                                                <rect key="frame" x="0.0" y="41" width="140" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Profit" drawsBackground="YES" id="4kh-NK-isR">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="inI-Hb-Kfg">
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Computed Code" drawsBackground="YES" id="5xg-VQ-Zqh">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ZxJ-6C-X2M" firstAttribute="width" secondItem="Sqv-Cq-RPZ" secondAttribute="width" id="2PO-FL-oax"/>
+                                            <constraint firstItem="inI-Hb-Kfg" firstAttribute="width" secondItem="Sqv-Cq-RPZ" secondAttribute="width" id="SUm-qO-Ech"/>
+                                            <constraint firstItem="Bk9-gq-Adf" firstAttribute="width" secondItem="Sqv-Cq-RPZ" secondAttribute="width" id="l7h-eC-hV5"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OS5-6L-5Wc">
+                                        <rect key="frame" x="806" y="0.0" width="600" height="951"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="jewel1" id="V0B-cW-MrB"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="OS5-6L-5Wc" firstAttribute="width" secondItem="ZdD-Bx-8gJ" secondAttribute="width" id="tov-yX-oLp"/>
+                                    <constraint firstItem="OS5-6L-5Wc" firstAttribute="width" secondItem="ZdD-Bx-8gJ" secondAttribute="height" multiplier="3:4" id="vWq-uO-EkG"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="C3q-pS-8Ms" customClass="AnnotationView" customModule="YCC_App_3" customModuleProvider="target">
+                                <rect key="frame" x="16" y="92" width="600" height="800"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="C3q-pS-8Ms" firstAttribute="leading" secondItem="ZdD-Bx-8gJ" secondAttribute="leading" id="FiL-Fr-h0J"/>
+                            <constraint firstAttribute="bottom" secondItem="Qm2-O1-SUl" secondAttribute="bottom" constant="16" id="aSf-fS-MD4"/>
+                            <constraint firstItem="C3q-pS-8Ms" firstAttribute="height" secondItem="ZdD-Bx-8gJ" secondAttribute="height" id="fq0-4r-9Yd"/>
+                            <constraint firstItem="C3q-pS-8Ms" firstAttribute="width" secondItem="ZdD-Bx-8gJ" secondAttribute="width" id="vez-Uf-lGw"/>
+                            <constraint firstAttribute="trailing" secondItem="Qm2-O1-SUl" secondAttribute="trailing" constant="16" id="wAa-YU-A0G"/>
+                            <constraint firstItem="Qm2-O1-SUl" firstAttribute="leading" secondItem="D45-Ot-f8a" secondAttribute="leading" constant="16" id="x0O-EN-msR"/>
+                            <constraint firstItem="C3q-pS-8Ms" firstAttribute="top" secondItem="ZdD-Bx-8gJ" secondAttribute="top" id="ydP-9Y-tC8"/>
+                            <constraint firstItem="Qm2-O1-SUl" firstAttribute="top" secondItem="D45-Ot-f8a" secondAttribute="top" constant="16" id="zz1-hN-pSh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="annotationView" destination="C3q-pS-8Ms" id="cqm-pR-Jdq"/>
+                        <outlet property="editedImageView" destination="OS5-6L-5Wc" id="dDh-Tt-XuH"/>
+                        <outlet property="originalImageView" destination="ZdD-Bx-8gJ" id="puX-2Q-KHF"/>
+                    </connections>
+                </viewController>
+                <customObject id="jD1-9v-BTA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="1291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="jewel1" width="1052" height="951"/>
+    </resources>
+</document>

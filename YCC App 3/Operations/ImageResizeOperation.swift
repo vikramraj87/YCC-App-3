@@ -29,12 +29,7 @@ class ImageResizeOperation: Operation, ResizedImageProvider {
     override func main() {
         if isCancelled { return }
         
-        let cgImage = ImageDownSampler.downsample(imageAt: originalImageURL,
-                                                  to: maxDimension)
-        
-        if isCancelled { return }
-        
-        let nsImage = NSImage(cgImage: cgImage, size: .zero)
-        _resizedImage = nsImage
+        _resizedImage = ImageDownSampler.downsample(imageAt: originalImageURL,
+                                                    to: maxDimension)
     }
 }

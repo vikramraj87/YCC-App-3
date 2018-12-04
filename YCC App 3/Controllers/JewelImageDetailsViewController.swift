@@ -52,8 +52,9 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
             }
             
             let originalImage = strongSelf.image(for: jewelImage.originalURL)
-            let editedImage = strongSelf.image(for: jewelImage.editedURL)
             
+            let editedURL = jewelImage.editedURL ?? jewelImage.originalURL
+            let editedImage = strongSelf.image(for: editedURL)
             
             DispatchQueue.main.async {
                 strongSelf.originalImageView.image = originalImage
@@ -62,9 +63,6 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
                 strongSelf.textDetector.detectText(in: originalImage)
             }
         }
-        
-        originalImageView.image = NSImage(contentsOf: jewelImage.originalURL)
-        editedImageView.image = NSImage(contentsOf: jewelImage.editedURL)
     }
     
     func image(for url: URL) -> NSImage {
@@ -72,10 +70,9 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
             return image
         }
         
-        let cgImage = ImageDownSampler.downsample(imageAt: url, to: JewelImageDetailsViewController.imageMaxDimension)
-        let nsImage = NSImage(cgImage: cgImage, size: .zero)
-        cache[url] = nsImage
-        return nsImage
+        let image = ImageDownSampler.downsample(imageAt: url, to: JewelImageDetailsViewController.imageMaxDimension)
+        cache[url] = image
+        return image
     }
 }
 

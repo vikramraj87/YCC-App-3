@@ -10,7 +10,7 @@ import Cocoa
 import ImageIO
 
 class ImageDownSampler {
-    static func downsample(imageAt imageURL: URL, to maxDimension: CGFloat) -> CGImage {
+    static func downsample(imageAt imageURL: URL, to maxDimension: CGFloat) -> NSImage {
         let imageSourceOptions = [
             kCGImageSourceShouldCache: false // Don't decode immediately
             ] as CFDictionary
@@ -23,7 +23,8 @@ class ImageDownSampler {
             kCGImageSourceThumbnailMaxPixelSize: maxDimension
             ] as CFDictionary
 
-        return CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions)!
+        let cgImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions)!
+        return NSImage(cgImage: cgImage, size: .zero)
     }
 }
 

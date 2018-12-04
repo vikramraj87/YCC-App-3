@@ -81,8 +81,11 @@ extension JewelImageStripViewController: NSCollectionViewDataSource {
         // Creating serial queue reduces the amount of threads allotted
         // when scrolling through collection views
         loadDecodeQueue.async {
-            jewelImage.thumbnail = ImageDownSampler.downsample(imageAt: jewelImage.originalURL,
-                                                                    to: Constants.thumbnailSize)
+            let thumbnail = ImageDownSampler.downsample(imageAt: jewelImage.originalURL,
+                                                        to: Constants.thumbnailSize)
+            jewelImage.thumbnail = thumbnail.cgImage(forProposedRect: nil,
+                                                     context: nil,
+                                                     hints: nil)
             DispatchQueue.main.async {
                 imageStripItem.jewelImage = jewelImage
             }

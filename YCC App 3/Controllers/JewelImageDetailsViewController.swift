@@ -16,14 +16,15 @@ class JewelImageDetailsViewController: NSViewController {
     @IBOutlet var editedImageView: NSImageView!
     @IBOutlet var annotationView: AnnotationView!
     
-    let imageLoaderQueue = DispatchQueue(label: "ImageLoaderQueue")
-    
-    
+//    let imageLoaderQueue = DispatchQueue(label: "ImageLoaderQueue")
+//
+//
     let codeRemovalService = CodeRemovalService(host: "127.0.0.1", port: 5000)
     
-    var cache: [URL: NSImage] = [:]
-    var textDetector = ImageTextDetector()
-    
+//    var cache: [URL: NSImage] = [:]
+//    var observations: [URL: [VNTextObservation]] = [:]
+//
+//
     var jewelImage: JewelImageProtocol?
     
     static let imageMaxDimension: CGFloat = 800.0
@@ -32,9 +33,9 @@ class JewelImageDetailsViewController: NSViewController {
         super.viewDidLoad()
         
         annotationView.imageView = originalImageView
-        annotationView.delegate = self
+//        annotationView.delegate = self
         
-        textDetector.delegate = self
+//        textDetector.delegate = self
         
         originalImageView.image = nil
         editedImageView.image = nil
@@ -45,60 +46,90 @@ class JewelImageDetailsViewController: NSViewController {
 extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate {
     func didSelect(_ jewelImage: JewelImageProtocol) {
         self.jewelImage = jewelImage
-        imageLoaderQueue.async { [weak self] in
-            guard let strongSelf = self else {
-                print("Not able to get hold of self")
-                return
-            }
-            
-            let originalImage = strongSelf.image(for: jewelImage.originalURL)
-            
-            let editedURL = jewelImage.editedURL ?? jewelImage.originalURL
-            let editedImage = strongSelf.image(for: editedURL)
-            
-            DispatchQueue.main.async {
-                strongSelf.originalImageView.image = originalImage
-                strongSelf.editedImageView.image = editedImage
-                
-                strongSelf.textDetector.detectText(in: originalImage)
-            }
-        }
+        
+        let originalImageQueue = OperationQueue()
+        originalImageQueue.maxConcurrentOperationCount = 1
+        
+        let resizeOp = ImageResizeOperation(originalImageURL: jewelImage.originalURL,
+                                            maxDimension: JewelImageDetailsViewController.imageMaxDimension)
+        let displayOp = DisplayImageOperation(imageView: originalImageView!)
+        
+        displayOp.addDependency(resizeOp)
+        
+        originalImageQueue.addOperation(resizeOp)
+        OperationQueue.main.addOperation(displayOp)
+        
+        // If no observations exist, follow the next paths
+        let editedImageQueue = OperationQueue()
+        editedImageQueue.maxConcurrentOperationCount = 1
+        
+        let originalResizeOp = ImageResizeOperation(originalImageURL: jewelImage.originalURL,
+                                                  maxDimension: JewelImageDetailsViewController.imageMaxDimension)
+        let detectCodeOp = TextDetectionOperation()
+        let codeRemovalOp = CodeRemovalOperation(service: codeRemovalService, imageURL: jewelImage.originalURL)
+        let displayOp = DisplayImageOperation(imageView: editedImageView!)
+        
+        detectCodeOp.addDependency(resizeOp)
+        codeRemovalOp.addDependency(detectCodeOp)
+        displayOp.addDependency(codeRemovalOp)
+        
+        
+        
+        // ImageResizeOperation -> TextDetectionOperation -> CodeRemovalOperation
+//        imageLoaderQueue.async { [weak self] in
+//            guard let strongSelf = self else {
+//                print("Not able to get hold of self")
+//                return
+//            }
+//
+//            let originalImage = strongSelf.image(for: jewelImage.originalURL)
+//
+//            let editedURL = jewelImage.editedURL ?? jewelImage.originalURL
+//            let editedImage = strongSelf.image(for: editedURL)
+//
+//            DispatchQueue.main.async {
+//                strongSelf.originalImageView.image = originalImage
+//                strongSelf.editedImageView.image = editedImage
+//
+//                strongSelf.textDetector.detectText(in: originalImage)
+//            }
+//        }
     }
     
-    func image(for url: URL) -> NSImage {
-        if let image = cache[url] {
-            return image
-        }
-        
-        let image = ImageDownSampler.downsample(imageAt: url, to: JewelImageDetailsViewController.imageMaxDimension)
-        cache[url] = image
-        return image
-    }
+//    func image(for url: URL) -> NSImage {
+//        if let image = cache[url] {
+//            return image
+//        }
+//
+//        let image = ImageDownSampler.downsample(imageAt: url, to: JewelImageDetailsViewController.imageMaxDimension)
+//        cache[url] = image
+//        return image
+//    }
 }
 
-extension JewelImageDetailsViewController: ImageTextDetectorDelegate {
-    func textDetected(_ observations: [VNTextObservation]) {
-        annotationView.textObservations = observations
-    }
-}
+//extension JewelImageDetailsViewController: ImageTextDetectorDelegate {
+//    func textDetected(_ observations: [VNTextObservation]) {
+//        annotationView.textObservations = observations
+//    }
+//}
 
-extension JewelImageDetailsViewController: AnnotationViewDelegate {
-    func annotationViewObservationsDidChange(_ newObservations: [VNTextObservation]) {
-        guard let jewelImage = jewelImage else {
-            print("No JewelImage object available.")
-            return
-        }
-        
-        codeRemovalService.remove(newObservations, from: jewelImage) {
-            [weak self] url in
-            guard let strongSelf = self else {
-                return
-            }
-            guard let editedImageURL = url else {
-                return
-            }
-            strongSelf.editedImageView.image = NSImage(contentsOf: editedImageURL)
-        }
-    }
-}
+//extension JewelImageDetailsViewController: AnnotationViewDelegate {
+//    func annotationViewObservationsDidChange(_ newObservations: [VNTextObservation]) {
+//        guard var jewelImage = jewelImage else {
+//            print("No JewelImage object available.")
+//            return
+//        }
+//        codeRemovalService.remove(newObservations, from: jewelImage) {
+//            [weak self] url in
+//            guard let strongSelf = self else {
+//                return
+//            }
+//            guard let editedImageURL = url else {
+//                return
+//            }
+//
+//            strongSelf.editedImageView.image = NSImage(contentsOf: editedImageURL)
+//        }
+//    }
+//}
 

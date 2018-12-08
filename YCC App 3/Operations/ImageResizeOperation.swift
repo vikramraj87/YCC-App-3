@@ -8,18 +8,11 @@
 
 import Cocoa
 
-protocol ResizedImageProvider {
-    var resizedImage: NSImage? { get }
-}
-
-class ImageResizeOperation: Operation, ResizedImageProvider {
+class ImageResizeOperation: Operation {
     let originalImageURL: URL
     let maxDimension: CGFloat
     
-    private var _resizedImage: NSImage?
-    var resizedImage: NSImage? {
-        return _resizedImage
-    }
+    fileprivate var _resizedImage: NSImage?
     
     init(originalImageURL: URL, maxDimension: CGFloat) {
         self.originalImageURL = originalImageURL
@@ -31,5 +24,11 @@ class ImageResizeOperation: Operation, ResizedImageProvider {
         
         _resizedImage = ImageDownSampler.downsample(imageAt: originalImageURL,
                                                     to: maxDimension)
+    }
+}
+
+extension ImageResizeOperation: ResizedImageProvider {
+    var resizedImage: NSImage? {
+        return _resizedImage
     }
 }

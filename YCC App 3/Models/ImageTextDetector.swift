@@ -9,10 +9,6 @@
 import Cocoa
 import Vision
 
-protocol ImageTextDetectorDelegate: class {
-    func textDetected(_ observations: [VNTextObservation])
-}
-
 class ImageTextDetector {
     lazy var textDetectionRequest: VNDetectTextRectanglesRequest = {
         let request = VNDetectTextRectanglesRequest(completionHandler: textDetectionHandler)
@@ -20,9 +16,16 @@ class ImageTextDetector {
         return request
     }()
     
-    weak var delegate: ImageTextDetectorDelegate?
+    let image: NSImage
+    let completionHandler: ([VNTextObservation]?) -> ()
     
-    func detectText(in image: NSImage) {
+    init(image: NSImage,
+         completionHandler: @escaping ([VNTextObservation]?) -> ()) {
+        self.image = image
+        self.completionHandler = completionHandler
+    }
+    
+    func detectText() {
         guard let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
             print("No CGImage backing for Image")
             return
@@ -40,10 +43,11 @@ class ImageTextDetector {
     fileprivate func textDetectionHandler(request: VNRequest, error: Error?) {
         guard let results = request.results else {
             print("No observations")
+            self.completionHandler(nil)
             return
         }
         
         let observations = results.compactMap { $0 as? VNTextObservation }
-        delegate?.textDetected(observations)
+        self.completionHandler(observations)
     }
 }

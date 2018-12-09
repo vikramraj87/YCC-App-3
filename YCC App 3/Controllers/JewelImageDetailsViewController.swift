@@ -9,23 +9,25 @@
 import Cocoa
 import Vision
 
-
+extension OperationQueue {
+    static func serialQueue() -> OperationQueue {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }
+}
 
 class JewelImageDetailsViewController: NSViewController {
     @IBOutlet var originalImageView: NSImageView!
     @IBOutlet var editedImageView: NSImageView!
     @IBOutlet var annotationView: AnnotationView!
     
-//    let imageLoaderQueue = DispatchQueue(label: "ImageLoaderQueue")
-//
-//
     let codeRemovalService = CodeRemovalService(host: "127.0.0.1", port: 5000)
     
-//    var cache: [URL: NSImage] = [:]
-//    var observations: [URL: [VNTextObservation]] = [:]
-//
-//
     var jewelImage: JewelImageProtocol?
+    
+    let originalImageQueue: OperationQueue = .serialQueue()
+    let editedImageQueue: OperationQueue = .serialQueue()
     
     static let imageMaxDimension: CGFloat = 800.0
 
@@ -33,9 +35,7 @@ class JewelImageDetailsViewController: NSViewController {
         super.viewDidLoad()
         
         annotationView.imageView = originalImageView
-//        annotationView.delegate = self
-        
-//        textDetector.delegate = self
+        annotationView.delegate = self
         
         originalImageView.image = nil
         editedImageView.image = nil
@@ -46,90 +46,124 @@ class JewelImageDetailsViewController: NSViewController {
 extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate {
     func didSelect(_ jewelImage: JewelImageProtocol) {
         self.jewelImage = jewelImage
+        annotationView.textObservations = []
         
-        let originalImageQueue = OperationQueue()
-        originalImageQueue.maxConcurrentOperationCount = 1
+        originalImageQueue.cancelAllOperations()
+        editedImageQueue.cancelAllOperations()
         
-        let resizeOp = ImageResizeOperation(originalImageURL: jewelImage.originalURL,
-                                            maxDimension: JewelImageDetailsViewController.imageMaxDimension)
-        let displayOp = DisplayImageOperation(imageView: originalImageView!)
+        var originalOps: [Operation] = []
+        var editedOps: [Operation] = []
+        var mainOps: [Operation] = []
         
-        displayOp.addDependency(resizeOp)
+        let maxDimension = JewelImageDetailsViewController.imageMaxDimension
         
-        originalImageQueue.addOperation(resizeOp)
-        OperationQueue.main.addOperation(displayOp)
+        // Resize the image at url to the specified max dimension
+        let resizeOp = ImageResizeOperation(maxDimension: maxDimension)
+        resizeOp.imageURL = jewelImage.originalURL
         
-        // If no observations exist, follow the next paths
-        let editedImageQueue = OperationQueue()
-        editedImageQueue.maxConcurrentOperationCount = 1
+        // Display the original image
+        let origDisplayOp = DisplayImageOperation(imageView: originalImageView)
+        origDisplayOp.addDependency(resizeOp)
         
-        let originalResizeOp = ImageResizeOperation(originalImageURL: jewelImage.originalURL,
-                                                  maxDimension: JewelImageDetailsViewController.imageMaxDimension)
-        let detectCodeOp = TextDetectionOperation()
-        let codeRemovalOp = CodeRemovalOperation(service: codeRemovalService, imageURL: jewelImage.originalURL)
-        let displayOp = DisplayImageOperation(imageView: editedImageView!)
+        originalOps = [resizeOp]
+        mainOps = [origDisplayOp]
         
-        detectCodeOp.addDependency(resizeOp)
-        codeRemovalOp.addDependency(detectCodeOp)
-        displayOp.addDependency(codeRemovalOp)
+        let editedResizeOp = ImageResizeOperation(maxDimension: maxDimension)
+        
+        let redisplayOp = DisplayImageOperation(imageView: editedImageView!)
+        redisplayOp.addDependency(editedResizeOp)
+        
+        mainOps.append(redisplayOp)
+        editedOps.append(editedResizeOp)
         
         
+        if let observations = jewelImage.selectedTextObservations {
+            origDisplayOp.completionBlock = { [weak self] in
+                // Setting observations before the image is set im
+                // imageview gives wrong image frame
+                // Hence set in a completion block of display operation
+                DispatchQueue.main.async {
+                    self?.annotationView.textObservations = observations
+                }
+            }
+            
+            if let editedURL = jewelImage.editedURL {
+                editedResizeOp.imageURL = editedURL
+            } else {
+                let codeRemovalOp = CodeRemovalOperation(service: codeRemovalService,
+                                                         imageURL: jewelImage.originalURL)
+                codeRemovalOp.textObservations = observations
+                codeRemovalOp.completionBlock = { [weak self] in
+                    self?.jewelImage?.editedURL = codeRemovalOp.imageURL
+                }
+
+                editedResizeOp.addDependency(codeRemovalOp)
+                
+                editedOps.append(codeRemovalOp)
+            }
+        } else {
+            // If no edited image url exists, load the original image as place holder
+            let editedDisplayOp = DisplayImageOperation(imageView: editedImageView!)
+            editedDisplayOp.addDependency(resizeOp)
+            mainOps.append(editedDisplayOp)
+
+            // Detect text
+            let textDetectionOp = TextDetectionOperation()
+            textDetectionOp.addDependency(resizeOp)
+            textDetectionOp.completionBlock = { [weak self] in
+                self?.jewelImage?.selectedTextObservations = textDetectionOp.textObservations
+                DispatchQueue.main.async {
+                    self?.annotationView.textObservations = textDetectionOp.textObservations ?? []
+                }
+            }
+
+            // Remove code
+            let codeRemovalOp = CodeRemovalOperation(service: codeRemovalService,
+                                                     imageURL: jewelImage.originalURL)
+            codeRemovalOp.addDependency(textDetectionOp)
+            codeRemovalOp.completionBlock = { [weak self] in
+                self?.jewelImage?.editedURL = codeRemovalOp.imageURL
+            }
+
+            editedResizeOp.addDependency(codeRemovalOp)
+
+            editedOps.append(contentsOf: [textDetectionOp, codeRemovalOp])
+        }
         
-        // ImageResizeOperation -> TextDetectionOperation -> CodeRemovalOperation
-//        imageLoaderQueue.async { [weak self] in
-//            guard let strongSelf = self else {
-//                print("Not able to get hold of self")
-//                return
-//            }
-//
-//            let originalImage = strongSelf.image(for: jewelImage.originalURL)
-//
-//            let editedURL = jewelImage.editedURL ?? jewelImage.originalURL
-//            let editedImage = strongSelf.image(for: editedURL)
-//
-//            DispatchQueue.main.async {
-//                strongSelf.originalImageView.image = originalImage
-//                strongSelf.editedImageView.image = editedImage
-//
-//                strongSelf.textDetector.detectText(in: originalImage)
-//            }
-//        }
+        OperationQueue.main.addOperations(mainOps, waitUntilFinished: false)
+        editedImageQueue.addOperations(editedOps, waitUntilFinished: false)
+        originalImageQueue.addOperations(originalOps, waitUntilFinished: false)
     }
-    
-//    func image(for url: URL) -> NSImage {
-//        if let image = cache[url] {
-//            return image
-//        }
-//
-//        let image = ImageDownSampler.downsample(imageAt: url, to: JewelImageDetailsViewController.imageMaxDimension)
-//        cache[url] = image
-//        return image
-//    }
 }
 
-//extension JewelImageDetailsViewController: ImageTextDetectorDelegate {
-//    func textDetected(_ observations: [VNTextObservation]) {
-//        annotationView.textObservations = observations
-//    }
-//}
-
-//extension JewelImageDetailsViewController: AnnotationViewDelegate {
-//    func annotationViewObservationsDidChange(_ newObservations: [VNTextObservation]) {
-//        guard var jewelImage = jewelImage else {
-//            print("No JewelImage object available.")
-//            return
-//        }
-//        codeRemovalService.remove(newObservations, from: jewelImage) {
-//            [weak self] url in
-//            guard let strongSelf = self else {
-//                return
-//            }
-//            guard let editedImageURL = url else {
-//                return
-//            }
-//
-//            strongSelf.editedImageView.image = NSImage(contentsOf: editedImageURL)
-//        }
-//    }
-//}
+extension JewelImageDetailsViewController: AnnotationViewDelegate {
+    func annotationViewObservationsDidChange(_ newObservations: [VNTextObservation]) {
+        guard var jewelImage = jewelImage else {
+            print("No JewelImage object available.")
+            return
+        }
+        
+        editedImageQueue.cancelAllOperations()
+        
+        jewelImage.selectedTextObservations = newObservations
+        
+        let codeRemovalOp = CodeRemovalOperation(service: codeRemovalService,
+                                                 imageURL: jewelImage.originalURL)
+        codeRemovalOp.textObservations = newObservations
+        codeRemovalOp.completionBlock = { [weak self] in
+            self?.jewelImage?.editedURL = codeRemovalOp.imageURL
+        }
+        
+        let maxDimension = JewelImageDetailsViewController.imageMaxDimension
+        let editedResizeOp = ImageResizeOperation(maxDimension: maxDimension)
+        editedResizeOp.addDependency(codeRemovalOp)
+        
+        let redisplayOp = DisplayImageOperation(imageView: editedImageView!)
+        redisplayOp.addDependency(editedResizeOp)
+        
+        OperationQueue.main.addOperation(redisplayOp)
+        editedImageQueue.addOperations([codeRemovalOp, editedResizeOp],
+                                       waitUntilFinished: false)
+    }
+}
 

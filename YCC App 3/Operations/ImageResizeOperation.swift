@@ -8,27 +8,66 @@
 
 import Cocoa
 
+protocol ImageURLProvider {
+    var imageURL: URL? { get }
+}
+
 class ImageResizeOperation: Operation {
-    let originalImageURL: URL
+    var imageURL: URL?
+    
     let maxDimension: CGFloat
     
-    fileprivate var _resizedImage: NSImage?
+    fileprivate var _image: NSImage?
     
-    init(originalImageURL: URL, maxDimension: CGFloat) {
-        self.originalImageURL = originalImageURL
+    init(maxDimension: CGFloat) {
         self.maxDimension = maxDimension
     }
     
     override func main() {
         if isCancelled { return }
         
-        _resizedImage = ImageDownSampler.downsample(imageAt: originalImageURL,
-                                                    to: maxDimension)
+        let url: URL?
+        if let imageURL = imageURL {
+            url = imageURL
+        } else {
+            let imageURLProvider = dependencies
+                .filter { $0 is ImageURLProvider }
+                .first as? ImageURLProvider
+            url = imageURLProvider?.imageURL
+        }
+        
+        if isCancelled { return }
+        
+        guard let strongImageURL = url else { return }
+        
+        _image = ImageDownSampler.downsample(imageAt: strongImageURL,
+                                            to: maxDimension)
     }
+    
+    
 }
 
-extension ImageResizeOperation: ResizedImageProvider {
-    var resizedImage: NSImage? {
-        return _resizedImage
+//class ImageResizeOperation: Operation {
+//    let originalImageURL: URL
+//    let maxDimension: CGFloat
+//
+//    fileprivate var _resizedImage: NSImage?
+//
+//    init(originalImageURL: URL, maxDimension: CGFloat) {
+//        self.originalImageURL = originalImageURL
+//        self.maxDimension = maxDimension
+//    }
+//
+//    override func main() {
+//        if isCancelled { return }
+//
+//        _resizedImage = ImageDownSampler.downsample(imageAt: originalImageURL,
+//                                                    to: maxDimension)
+//    }
+//}
+//
+extension ImageResizeOperation: ImageProvider {
+    var image: NSImage? {
+        return _image
     }
 }

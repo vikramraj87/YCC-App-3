@@ -8,9 +8,9 @@
 
 import Cocoa
 
-protocol ImageURLProvider {
-    var imageURL: URL? { get }
-}
+//protocol ImageURLProvider {
+//    var imageURL: URL? { get }
+//}
 
 class DisplayImageOperation: Operation {
     var image: NSImage?
@@ -28,10 +28,10 @@ class DisplayImageOperation: Operation {
         if let image = image {
             img = image
         } else {
-            let resizedImageProvider = dependencies
-                .filter { $0 is ResizedImageProvider }
-                .first as? ResizedImageProvider
-            img = resizedImageProvider?.resizedImage
+            let imageProvider = dependencies
+                .filter { $0 is ImageProvider }
+                .first as? ImageProvider
+            img = imageProvider?.image
         }
         
         if isCancelled { return }

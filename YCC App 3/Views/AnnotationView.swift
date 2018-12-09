@@ -16,8 +16,6 @@ protocol AnnotationViewDelegate: class {
 class AnnotationView: NSView {
     var textObservations: [VNTextObservation] = [] {
         didSet {
-            boundingBoxes = []
-            delegate?.annotationViewObservationsDidChange(textObservations)
             setNeedsDisplay(bounds)
         }
     }
@@ -88,6 +86,7 @@ class AnnotationView: NSView {
         for (index, boundingBox) in boundingBoxes.enumerated() {
             if boundingBox.contains(clickedPoint) {
                 textObservations.remove(at: index)
+                delegate?.annotationViewObservationsDidChange(textObservations)
                 break
             }
         }

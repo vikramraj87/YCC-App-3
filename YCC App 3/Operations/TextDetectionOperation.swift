@@ -9,8 +9,8 @@
 import Cocoa
 import Vision
 
-protocol ResizedImageProvider {
-    var resizedImage: NSImage? { get }
+protocol ImageProvider {
+    var image: NSImage? { get }
 }
 
 class TextDetectionOperation: AsyncOperation {
@@ -25,16 +25,15 @@ class TextDetectionOperation: AsyncOperation {
         if let image = image {
             resizedImage = image
         } else {
-            let resizedImageProvider = dependencies
-                .filter { $0 is ResizedImageProvider }
-                .first as? ResizedImageProvider
-            resizedImage = resizedImageProvider?.resizedImage
+            let imageProvider = dependencies
+                .filter { $0 is ImageProvider }
+                .first as? ImageProvider
+            resizedImage = imageProvider?.image
         }
         
         guard let resizedImg = resizedImage else { return }
         
         if self.isCancelled { return }
-        
         
         let detector = ImageTextDetector(image: resizedImg) { observations in
             if self.isCancelled { return }

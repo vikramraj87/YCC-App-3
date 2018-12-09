@@ -56,3 +56,9 @@ class CodeRemovalOperation: AsyncOperation {
     }
     
 }
+
+extension CodeRemovalOperation: ImageURLProvider {
+    var imageURL: URL? {
+        return _editedImageURL
+    }
+}

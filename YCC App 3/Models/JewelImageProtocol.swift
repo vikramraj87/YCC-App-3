@@ -14,9 +14,11 @@ protocol JewelImageProtocol {
     
     // Required to delete the original image after successful import
     var originalURL: URL { get }
-    var editedURL: URL? { get }
+    var editedURL: URL? { get set }
     
     var thumbnail: CGImage? { get set }
+    
+    var selectedTextObservations: [VNTextObservation]? { get set }
 }
 
 class JewelImage: JewelImageProtocol {
@@ -27,6 +29,12 @@ class JewelImage: JewelImageProtocol {
     
     // To hold the thumbnail of original image
     var thumbnail: CGImage?
+    
+    var selectedTextObservations: [VNTextObservation]? {
+        didSet {
+            editedURL = nil
+        }
+    }
     
     init(originalURL: URL) {
         self.originalURL = originalURL

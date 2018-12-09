@@ -14,19 +14,60 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-                        <toolbar key="toolbar" implicitIdentifier="E20B2D39-634E-40CA-BA63-D5ABF98886A1" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="M7Z-e3-Mbs">
+                        <toolbar key="toolbar" implicitIdentifier="E20B2D39-634E-40CA-BA63-D5ABF98886A1" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="M7Z-e3-Mbs">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="CtJ-1T-f3b"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="z4e-6j-IKD"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="MtJ-4I-oDP"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="64q-Ld-kxI"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fvP-4W-cj0"/>
+                                <toolbarItem implicitItemIdentifier="26103E01-49D0-4672-AD69-BD893BCDB568" label="Vertical Position" paletteLabel="Vertical Position" sizingBehavior="auto" id="aUy-8n-CGd">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="0HJ-ht-i40">
+                                        <rect key="frame" x="0.0" y="14" width="119" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="6xZ-j0-Snq">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="Top" width="56" selected="YES"/>
+                                                <segment label="Bottom" width="56" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="687AE90B-8D04-48B2-928C-FB05F122722A" label="Horizontal Position" paletteLabel="Horizontal Position" sizingBehavior="auto" id="1mu-5V-X7U">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="j2R-g3-KxG">
+                                        <rect key="frame" x="4" y="14" width="98" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="ess-dD-4F7">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="Left" width="35" selected="YES"/>
+                                                <segment label="Right"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="E27DBBBF-4950-4F77-9163-36BAFBCB7CD3" label="Text Color" paletteLabel="Text Color" sizingBehavior="auto" id="CQF-JT-FNZ">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="VaJ-s9-sA3">
+                                        <rect key="frame" x="0.0" y="14" width="93" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="XDK-Yj-6lB">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="Light" width="43" selected="YES"/>
+                                                <segment label="Dark" width="43" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="BgC-95-8nM"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="CtJ-1T-f3b"/>
-                                <toolbarItem reference="z4e-6j-IKD"/>
                                 <toolbarItem reference="fvP-4W-cj0"/>
-                                <toolbarItem reference="MtJ-4I-oDP"/>
+                                <toolbarItem reference="aUy-8n-CGd"/>
+                                <toolbarItem reference="1mu-5V-X7U"/>
+                                <toolbarItem reference="BgC-95-8nM"/>
+                                <toolbarItem reference="CQF-JT-FNZ"/>
+                                <toolbarItem reference="fvP-4W-cj0"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -70,7 +111,7 @@
         <scene sceneID="cdU-aT-GMF">
             <objects>
                 <viewController id="ZVf-zB-gTE" customClass="JewelImageStripViewController" customModule="YCC_App_3" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="58Z-PA-FfO">
+                    <view key="view" id="58Z-PA-FfO">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

@@ -65,8 +65,14 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
         let origDisplayOp = DisplayImageOperation(imageView: originalImageView)
         origDisplayOp.addDependency(resizeOp)
         
-        originalOps = [resizeOp]
-        mainOps = [origDisplayOp]
+        originalOps.append(resizeOp)
+        mainOps.append(origDisplayOp)
+        
+        let codeRemovalOp = CodeRemovalOperation(service: codeRemovalService,
+                                                 imageURL: jewelImage.originalURL)
+        codeRemovalOp.completionBlock = { [weak self] in
+            self?.jewelImage?.editedURL = codeRemovalOp.imageURL
+        }
         
         let editedResizeOp = ImageResizeOperation(maxDimension: maxDimension)
         
@@ -90,15 +96,8 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
             if let editedURL = jewelImage.editedURL {
                 editedResizeOp.imageURL = editedURL
             } else {
-                let codeRemovalOp = CodeRemovalOperation(service: codeRemovalService,
-                                                         imageURL: jewelImage.originalURL)
                 codeRemovalOp.textObservations = observations
-                codeRemovalOp.completionBlock = { [weak self] in
-                    self?.jewelImage?.editedURL = codeRemovalOp.imageURL
-                }
-
                 editedResizeOp.addDependency(codeRemovalOp)
-                
                 editedOps.append(codeRemovalOp)
             }
         } else {
@@ -117,16 +116,9 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
                 }
             }
 
-            // Remove code
-            let codeRemovalOp = CodeRemovalOperation(service: codeRemovalService,
-                                                     imageURL: jewelImage.originalURL)
             codeRemovalOp.addDependency(textDetectionOp)
-            codeRemovalOp.completionBlock = { [weak self] in
-                self?.jewelImage?.editedURL = codeRemovalOp.imageURL
-            }
-
             editedResizeOp.addDependency(codeRemovalOp)
-
+            
             editedOps.append(contentsOf: [textDetectionOp, codeRemovalOp])
         }
         
@@ -138,14 +130,10 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
 
 extension JewelImageDetailsViewController: AnnotationViewDelegate {
     func annotationViewObservationsDidChange(_ newObservations: [VNTextObservation]) {
-        guard var jewelImage = jewelImage else {
-            print("No JewelImage object available.")
-            return
-        }
+        guard var jewelImage = jewelImage else { return }
+        jewelImage.selectedTextObservations = newObservations
         
         editedImageQueue.cancelAllOperations()
-        
-        jewelImage.selectedTextObservations = newObservations
         
         let codeRemovalOp = CodeRemovalOperation(service: codeRemovalService,
                                                  imageURL: jewelImage.originalURL)

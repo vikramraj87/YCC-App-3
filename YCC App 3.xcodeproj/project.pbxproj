@@ -14,11 +14,14 @@
 		AC14EE8821B614700013E811 /* JewelImageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14EE8721B614700013E811 /* JewelImageState.swift */; };
 		AC14EE8A21BABBAE0013E811 /* TextDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14EE8921BABBAE0013E811 /* TextDetectionOperation.swift */; };
 		AC14EE8C21BB58A60013E811 /* DisplayImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14EE8B21BB58A60013E811 /* DisplayImageOperation.swift */; };
+		AC3C84EE21CFC15C00C22CA1 /* ImageAnnotateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C84ED21CFC15C00C22CA1 /* ImageAnnotateOperation.swift */; };
 		AC48BF88219FA69500CA1B1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF87219FA69500CA1B1F /* AppDelegate.swift */; };
 		AC48BF8A219FA69500CA1B1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF89219FA69500CA1B1F /* ViewController.swift */; };
 		AC48BF8C219FA69F00CA1B1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC48BF8B219FA69F00CA1B1F /* Assets.xcassets */; };
 		AC48BF8F219FA69F00CA1B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC48BF8D219FA69F00CA1B1F /* Main.storyboard */; };
 		AC48BF9B219FA6A000CA1B1F /* YCC_App_3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF9A219FA6A000CA1B1F /* YCC_App_3Tests.swift */; };
+		AC5A1DC321C1F1DB003680A2 /* OperationQueue+serialQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A1DC221C1F1DB003680A2 /* OperationQueue+serialQueue.swift */; };
+		AC5A1DC521C1F214003680A2 /* NSImage+writeJPEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A1DC421C1F214003680A2 /* NSImage+writeJPEG.swift */; };
 		AC6FBF3321AADDA30043F92B /* JewelImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FBF3221AADDA30043F92B /* JewelImageProtocol.swift */; };
 		ACBC861C21AE3756001C1ED6 /* JewelImageStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC861B21AE3756001C1ED6 /* JewelImageStripViewController.swift */; };
 		ACBC861E21AE378A001C1ED6 /* JewelImageImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC861D21AE378A001C1ED6 /* JewelImageImportViewController.swift */; };
@@ -65,6 +68,7 @@
 		AC14EE8721B614700013E811 /* JewelImageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageState.swift; sourceTree = "<group>"; };
 		AC14EE8921BABBAE0013E811 /* TextDetectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionOperation.swift; sourceTree = "<group>"; };
 		AC14EE8B21BB58A60013E811 /* DisplayImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayImageOperation.swift; sourceTree = "<group>"; };
+		AC3C84ED21CFC15C00C22CA1 /* ImageAnnotateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAnnotateOperation.swift; sourceTree = "<group>"; };
 		AC48BF84219FA69500CA1B1F /* YCC App 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YCC App 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC48BF87219FA69500CA1B1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC48BF89219FA69500CA1B1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 		AC48BF9C219FA6A000CA1B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC48BFA5219FA6D700CA1B1F /* Ideas.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Ideas.md; sourceTree = "<group>"; };
 		AC48BFA6219FA76F00CA1B1F /* Backend.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Backend.md; sourceTree = "<group>"; };
+		AC5A1DC221C1F1DB003680A2 /* OperationQueue+serialQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+serialQueue.swift"; sourceTree = "<group>"; };
+		AC5A1DC421C1F214003680A2 /* NSImage+writeJPEG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+writeJPEG.swift"; sourceTree = "<group>"; };
 		AC6FBF3221AADDA30043F92B /* JewelImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageProtocol.swift; sourceTree = "<group>"; };
 		ACBC861B21AE3756001C1ED6 /* JewelImageStripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageStripViewController.swift; sourceTree = "<group>"; };
 		ACBC861D21AE378A001C1ED6 /* JewelImageImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageImportViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +215,8 @@
 				ACBC863121AF67E6001C1ED6 /* NSStoryboard+Names.swift */,
 				ACFA0FEF21B434F00010F400 /* VNTextObservationCollection+Encoded.swift */,
 				ACFA0FF121B4354A0010F400 /* CGRect+Encoded.swift */,
+				AC5A1DC221C1F1DB003680A2 /* OperationQueue+serialQueue.swift */,
+				AC5A1DC421C1F214003680A2 /* NSImage+writeJPEG.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 				AC14EE8521B610A80013E811 /* CodeRemovalOperation.swift */,
 				AC14EE8921BABBAE0013E811 /* TextDetectionOperation.swift */,
 				AC14EE8B21BB58A60013E811 /* DisplayImageOperation.swift */,
+				AC3C84ED21CFC15C00C22CA1 /* ImageAnnotateOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -458,6 +467,7 @@
 				AC48BF8A219FA69500CA1B1F /* ViewController.swift in Sources */,
 				ACBC863421AF731E001C1ED6 /* Constants.swift in Sources */,
 				ACEAAAFB21A77C960040F09A /* AnnotationView.swift in Sources */,
+				AC3C84EE21CFC15C00C22CA1 /* ImageAnnotateOperation.swift in Sources */,
 				ACFA0FF021B434F00010F400 /* VNTextObservationCollection+Encoded.swift in Sources */,
 				AC48BF88219FA69500CA1B1F /* AppDelegate.swift in Sources */,
 				ACBC861C21AE3756001C1ED6 /* JewelImageStripViewController.swift in Sources */,
@@ -469,12 +479,14 @@
 				AC14EE8821B614700013E811 /* JewelImageState.swift in Sources */,
 				ACFA0FF421B436F70010F400 /* AsyncOperation.swift in Sources */,
 				ACBC862021AE37A7001C1ED6 /* JewelImageDetailsViewController.swift in Sources */,
+				AC5A1DC321C1F1DB003680A2 /* OperationQueue+serialQueue.swift in Sources */,
 				ACFA0FF221B4354A0010F400 /* CGRect+Encoded.swift in Sources */,
 				ACEAAB0021A8EA7B0040F09A /* NSSize+aspectRatio.swift in Sources */,
 				ACBC862821AE381A001C1ED6 /* NSUserInterfaceIdentifiers.swift in Sources */,
 				ACEAAAFE21A8E9A40040F09A /* NSImageView+imageFrame.swift in Sources */,
 				ACEAAB0221A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift in Sources */,
 				AC14EE8421B610850013E811 /* ImageResizeOperation.swift in Sources */,
+				AC5A1DC521C1F214003680A2 /* NSImage+writeJPEG.swift in Sources */,
 				AC14EE8A21BABBAE0013E811 /* TextDetectionOperation.swift in Sources */,
 				ACBC861E21AE378A001C1ED6 /* JewelImageImportViewController.swift in Sources */,
 				AC14EE8C21BB58A60013E811 /* DisplayImageOperation.swift in Sources */,

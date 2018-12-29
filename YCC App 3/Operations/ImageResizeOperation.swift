@@ -47,25 +47,7 @@ class ImageResizeOperation: Operation {
     
 }
 
-//class ImageResizeOperation: Operation {
-//    let originalImageURL: URL
-//    let maxDimension: CGFloat
-//
-//    fileprivate var _resizedImage: NSImage?
-//
-//    init(originalImageURL: URL, maxDimension: CGFloat) {
-//        self.originalImageURL = originalImageURL
-//        self.maxDimension = maxDimension
-//    }
-//
-//    override func main() {
-//        if isCancelled { return }
-//
-//        _resizedImage = ImageDownSampler.downsample(imageAt: originalImageURL,
-//                                                    to: maxDimension)
-//    }
-//}
-//
+
 extension ImageResizeOperation: ImageProvider {
     var image: NSImage? {
         return _image

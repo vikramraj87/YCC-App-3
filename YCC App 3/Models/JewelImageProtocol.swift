@@ -11,14 +11,12 @@ import Vision
 
 protocol JewelImageProtocol {
     var state: JewelImageState { get set }
-    
-    // Required to delete the original image after successful import
     var originalURL: URL { get }
     var codeRemovedURL: URL? { get set }
-    
+    var annotatedURL: URL? { get set }
     var thumbnail: CGImage? { get set }
-    
     var selectedTextObservations: [VNTextObservation]? { get set }
+    var code: JewelCode { get set }
 }
 
 class JewelImage: JewelImageProtocol {
@@ -26,6 +24,7 @@ class JewelImage: JewelImageProtocol {
     
     let originalURL: URL
     var codeRemovedURL: URL?
+    var annotatedURL: URL?
     
     // To hold the thumbnail of original image
     var thumbnail: CGImage?
@@ -36,7 +35,10 @@ class JewelImage: JewelImageProtocol {
         }
     }
     
+    var code: JewelCode
+    
     init(originalURL: URL) {
         self.originalURL = originalURL
+        self.code = JewelCode()
     }
 }

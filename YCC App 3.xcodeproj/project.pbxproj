@@ -14,6 +14,14 @@
 		AC14EE8821B614700013E811 /* JewelImageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14EE8721B614700013E811 /* JewelImageState.swift */; };
 		AC14EE8A21BABBAE0013E811 /* TextDetectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14EE8921BABBAE0013E811 /* TextDetectionOperation.swift */; };
 		AC14EE8C21BB58A60013E811 /* DisplayImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14EE8B21BB58A60013E811 /* DisplayImageOperation.swift */; };
+		AC16341321D8851300EC51FC /* JewelCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341221D8851300EC51FC /* JewelCode.swift */; };
+		AC16341521D8853B00EC51FC /* CodePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341421D8853B00EC51FC /* CodePosition.swift */; };
+		AC16341721D8856D00EC51FC /* CodeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341621D8856D00EC51FC /* CodeColor.swift */; };
+		AC16341A21D88F9900EC51FC /* JewelCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341921D88F9900EC51FC /* JewelCodeTests.swift */; };
+		AC16341B21D8901B00EC51FC /* JewelCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341221D8851300EC51FC /* JewelCode.swift */; };
+		AC16341C21D890BF00EC51FC /* CodePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341421D8853B00EC51FC /* CodePosition.swift */; };
+		AC16341D21D890D200EC51FC /* CodeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341621D8856D00EC51FC /* CodeColor.swift */; };
+		AC16341F21D9981B00EC51FC /* SaveImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341E21D9981B00EC51FC /* SaveImageOperation.swift */; };
 		AC3C84EE21CFC15C00C22CA1 /* ImageAnnotateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C84ED21CFC15C00C22CA1 /* ImageAnnotateOperation.swift */; };
 		AC48BF88219FA69500CA1B1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF87219FA69500CA1B1F /* AppDelegate.swift */; };
 		AC48BF8A219FA69500CA1B1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF89219FA69500CA1B1F /* ViewController.swift */; };
@@ -68,6 +76,11 @@
 		AC14EE8721B614700013E811 /* JewelImageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelImageState.swift; sourceTree = "<group>"; };
 		AC14EE8921BABBAE0013E811 /* TextDetectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionOperation.swift; sourceTree = "<group>"; };
 		AC14EE8B21BB58A60013E811 /* DisplayImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayImageOperation.swift; sourceTree = "<group>"; };
+		AC16341221D8851300EC51FC /* JewelCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelCode.swift; sourceTree = "<group>"; };
+		AC16341421D8853B00EC51FC /* CodePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePosition.swift; sourceTree = "<group>"; };
+		AC16341621D8856D00EC51FC /* CodeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeColor.swift; sourceTree = "<group>"; };
+		AC16341921D88F9900EC51FC /* JewelCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelCodeTests.swift; sourceTree = "<group>"; };
+		AC16341E21D9981B00EC51FC /* SaveImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageOperation.swift; sourceTree = "<group>"; };
 		AC3C84ED21CFC15C00C22CA1 /* ImageAnnotateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAnnotateOperation.swift; sourceTree = "<group>"; };
 		AC48BF84219FA69500CA1B1F /* YCC App 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YCC App 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC48BF87219FA69500CA1B1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +144,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC16341821D88F6D00EC51FC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AC16341921D88F9900EC51FC /* JewelCodeTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		AC48BF7B219FA69500CA1B1F = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +199,7 @@
 		AC48BF99219FA6A000CA1B1F /* YCC App 3Tests */ = {
 			isa = PBXGroup;
 			children = (
+				AC16341821D88F6D00EC51FC /* Models */,
 				AC48BF9A219FA6A000CA1B1F /* YCC_App_3Tests.swift */,
 				AC48BF9C219FA6A000CA1B1F /* Info.plist */,
 			);
@@ -228,6 +250,9 @@
 				AC6FBF3221AADDA30043F92B /* JewelImageProtocol.swift */,
 				ACBC863521B0C971001C1ED6 /* ImageDownSampler.swift */,
 				AC14EE8721B614700013E811 /* JewelImageState.swift */,
+				AC16341221D8851300EC51FC /* JewelCode.swift */,
+				AC16341421D8853B00EC51FC /* CodePosition.swift */,
+				AC16341621D8856D00EC51FC /* CodeColor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,6 +284,7 @@
 				AC14EE8921BABBAE0013E811 /* TextDetectionOperation.swift */,
 				AC14EE8B21BB58A60013E811 /* DisplayImageOperation.swift */,
 				AC3C84ED21CFC15C00C22CA1 /* ImageAnnotateOperation.swift */,
+				AC16341E21D9981B00EC51FC /* SaveImageOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -476,7 +502,9 @@
 				ACBC862C21AEEEC8001C1ED6 /* FileManager+contentsOfFolder.swift in Sources */,
 				ACBC862321AE37CC001C1ED6 /* JewelImageStripViewItem.swift in Sources */,
 				ACFA0FED21B40FEE0010F400 /* CodeRemovalService.swift in Sources */,
+				AC16341721D8856D00EC51FC /* CodeColor.swift in Sources */,
 				AC14EE8821B614700013E811 /* JewelImageState.swift in Sources */,
+				AC16341321D8851300EC51FC /* JewelCode.swift in Sources */,
 				ACFA0FF421B436F70010F400 /* AsyncOperation.swift in Sources */,
 				ACBC862021AE37A7001C1ED6 /* JewelImageDetailsViewController.swift in Sources */,
 				AC5A1DC321C1F1DB003680A2 /* OperationQueue+serialQueue.swift in Sources */,
@@ -490,8 +518,10 @@
 				AC14EE8A21BABBAE0013E811 /* TextDetectionOperation.swift in Sources */,
 				ACBC861E21AE378A001C1ED6 /* JewelImageImportViewController.swift in Sources */,
 				AC14EE8C21BB58A60013E811 /* DisplayImageOperation.swift in Sources */,
+				AC16341F21D9981B00EC51FC /* SaveImageOperation.swift in Sources */,
 				ACBC863621B0C971001C1ED6 /* ImageDownSampler.swift in Sources */,
 				AC14EE8621B610A80013E811 /* CodeRemovalOperation.swift in Sources */,
+				AC16341521D8853B00EC51FC /* CodePosition.swift in Sources */,
 				ACEAAB0521AA8DA10040F09A /* ImageTextDetector.swift in Sources */,
 				AC6FBF3321AADDA30043F92B /* JewelImageProtocol.swift in Sources */,
 			);
@@ -501,6 +531,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC16341A21D88F9900EC51FC /* JewelCodeTests.swift in Sources */,
+				AC16341C21D890BF00EC51FC /* CodePosition.swift in Sources */,
+				AC16341D21D890D200EC51FC /* CodeColor.swift in Sources */,
+				AC16341B21D8901B00EC51FC /* JewelCode.swift in Sources */,
 				AC48BF9B219FA6A000CA1B1F /* YCC_App_3Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

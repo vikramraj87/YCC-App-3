@@ -8,22 +8,6 @@
 
 import Cocoa
 
-extension CodePosition {
-    var isBottom: Bool {
-        return self == .bottomLeft || self == .bottomRight
-    }
-    
-    var isLeft: Bool {
-        return self == .bottomLeft || self == .topLeft
-    }
-}
-
-extension CodeColor {
-    var nsColor: NSColor {
-        return self == .light ? .white : .black
-    }
-}
-
 extension NSImage {
     func writeJPEG(to url: URL) throws {
         let imageRepProps: [NSBitmapImageRep.PropertyKey: Any]

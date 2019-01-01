@@ -13,10 +13,12 @@ import Foundation
 // 1. Import cancelled
 // 2. Code Removal unsuccessful. Original Image only imported
 // 3. Code Removal successful. Both images imported
+// 4. Image already exported
 
 enum JewelImageState {
     case notReviewed
     case importCancelled
     case codeRemovalUnsuccessful
     case codeRemovalSuccessful
+    case exported
 }

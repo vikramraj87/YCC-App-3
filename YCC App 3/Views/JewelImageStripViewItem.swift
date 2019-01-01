@@ -16,6 +16,7 @@ class JewelImageStripViewItem: NSCollectionViewItem {
     static let codeRemovedColor = NSColor.systemGreen.cgColor
     static let codeNotRemovedColor = NSColor.systemOrange.cgColor
     static let notImportedColor = NSColor.systemRed.cgColor
+    static let exportedColor = NSColor.cyan.cgColor
     static let selectedColor = NSColor.selectedMenuItemColor.cgColor
     
     var jewelImage: JewelImageProtocol? {
@@ -39,20 +40,23 @@ class JewelImageStripViewItem: NSCollectionViewItem {
     }
     
     var unselectedBorderColor: CGColor {
-        guard let jewelImage = jewelImage else {
-            return JewelImageStripViewItem.notReviewedColor
-        }
-        
-        switch jewelImage.state {
-        case .notReviewed:
-            return JewelImageStripViewItem.notReviewedColor
-        case .codeRemovalSuccessful:
-            return JewelImageStripViewItem.codeRemovedColor
-        case .codeRemovalUnsuccessful:
-            return JewelImageStripViewItem.codeNotRemovedColor
-        case .importCancelled:
-            return JewelImageStripViewItem.notImportedColor
-        }
+        return JewelImageStripViewItem.notReviewedColor
+//        guard let jewelImage = jewelImage else {
+//            return JewelImageStripViewItem.notReviewedColor
+//        }
+//
+//        switch jewelImage.state {
+//        case .notReviewed:
+//            return JewelImageStripViewItem.notReviewedColor
+//        case .codeRemovalSuccessful:
+//            return JewelImageStripViewItem.codeRemovedColor
+//        case .codeRemovalUnsuccessful:
+//            return JewelImageStripViewItem.codeNotRemovedColor
+//        case .importCancelled:
+//            return JewelImageStripViewItem.notImportedColor
+//        case .exported:
+//            return JewelImageStripViewItem.exportedColor
+//        }
     }
     
     override func viewDidLoad() {

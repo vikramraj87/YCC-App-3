@@ -180,10 +180,10 @@
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="jewel1" id="RC8-l5-9VX"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="19" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zak-NC-P1n">
-                                        <rect key="frame" x="633" y="403" width="140" height="145"/>
+                                        <rect key="frame" x="633" y="365" width="140" height="221"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sqv-Cq-RPZ">
-                                                <rect key="frame" x="0.0" y="123" width="140" height="22"/>
+                                                <rect key="frame" x="0.0" y="199" width="140" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="N3N-p1-stm"/>
                                                 </constraints>
@@ -194,7 +194,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bk9-gq-Adf">
-                                                <rect key="frame" x="0.0" y="82" width="140" height="22"/>
+                                                <rect key="frame" x="0.0" y="158" width="140" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Multiplier" drawsBackground="YES" id="GHb-ff-Dc0">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -202,25 +202,45 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZxJ-6C-X2M">
-                                                <rect key="frame" x="0.0" y="41" width="140" height="22"/>
+                                                <rect key="frame" x="0.0" y="117" width="140" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Profit" drawsBackground="YES" id="4kh-NK-isR">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xQx-sF-688">
+                                                <rect key="frame" x="-2" y="81" width="144" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="OR" id="ZhE-Oq-dB9">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="inI-Hb-Kfg">
-                                                <rect key="frame" x="0.0" y="0.0" width="140" height="22"/>
+                                                <rect key="frame" x="0.0" y="40" width="140" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Computed Code" drawsBackground="YES" id="5xg-VQ-Zqh">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MoZ-TN-DIB">
+                                                <rect key="frame" x="-6" y="-7" width="152" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Add Caption" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="E4g-rL-Ug2">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="addCaption:" target="AsU-SH-MNM" id="cVN-A1-csm"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="ZxJ-6C-X2M" firstAttribute="width" secondItem="Sqv-Cq-RPZ" secondAttribute="width" id="2PO-FL-oax"/>
                                             <constraint firstItem="inI-Hb-Kfg" firstAttribute="width" secondItem="Sqv-Cq-RPZ" secondAttribute="width" id="SUm-qO-Ech"/>
+                                            <constraint firstItem="MoZ-TN-DIB" firstAttribute="centerX" secondItem="Sqv-Cq-RPZ" secondAttribute="centerX" id="aDQ-wn-6KB"/>
+                                            <constraint firstItem="xQx-sF-688" firstAttribute="width" secondItem="Sqv-Cq-RPZ" secondAttribute="width" id="jPx-a6-UiD"/>
                                             <constraint firstItem="Bk9-gq-Adf" firstAttribute="width" secondItem="Sqv-Cq-RPZ" secondAttribute="width" id="l7h-eC-hV5"/>
                                         </constraints>
                                         <visibilityPriorities>
@@ -228,8 +248,12 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -273,8 +297,12 @@
                     </view>
                     <connections>
                         <outlet property="annotationView" destination="C3q-pS-8Ms" id="cqm-pR-Jdq"/>
+                        <outlet property="dealerCodeTextField" destination="Sqv-Cq-RPZ" id="0GV-c2-KOS"/>
                         <outlet property="editedImageView" destination="OS5-6L-5Wc" id="dDh-Tt-XuH"/>
+                        <outlet property="multiplierTextField" destination="Bk9-gq-Adf" id="9P0-8V-bpo"/>
                         <outlet property="originalImageView" destination="ZdD-Bx-8gJ" id="puX-2Q-KHF"/>
+                        <outlet property="profitTextField" destination="ZxJ-6C-X2M" id="0JW-Wr-x5T"/>
+                        <outlet property="retailerCodeTextField" destination="inI-Hb-Kfg" id="wwW-R5-YfZ"/>
                     </connections>
                 </viewController>
                 <customObject id="jD1-9v-BTA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

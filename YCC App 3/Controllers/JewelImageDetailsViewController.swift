@@ -9,23 +9,16 @@
 import Cocoa
 import Vision
 
-enum CodePosition {
-    case topLeft
-    case topRight
-    case bottomLeft
-    case bottomRight
-}
-
-enum CodeColor {
-    case light
-    case dark
-}
-
 class JewelImageDetailsViewController: NSViewController {
     @IBOutlet var originalImageView: NSImageView!
     @IBOutlet var editedImageView: NSImageView!
     @IBOutlet var annotationView: AnnotationView!
     
+    @IBOutlet var dealerCodeTextField: NSTextField!
+    @IBOutlet var multiplierTextField: NSTextField!
+    @IBOutlet var profitTextField: NSTextField!
+    
+    @IBOutlet var retailerCodeTextField: NSTextField!
     let codeRemovalService = CodeRemovalService(host: "127.0.0.1", port: 5000)
     
     var jewelImage: JewelImageProtocol?
@@ -44,6 +37,53 @@ class JewelImageDetailsViewController: NSViewController {
         originalImageView.image = nil
         editedImageView.image = nil
     }
+    
+    @IBAction func addCaption(_ sender: Any) {
+        guard var jewelImage = jewelImage else { return }
+        
+        let retailerCode = retailerCodeTextField.integerValue
+        
+        if retailerCode != 0 {
+            // Use this as final retailer code
+            jewelImage.code.retailerCode = retailerCode
+        } else {
+            jewelImage.code.retailerCode = 0
+            jewelImage.code.originalCode = dealerCodeTextField.integerValue
+            jewelImage.code.multiplier = multiplierTextField.floatValue
+            jewelImage.code.profit = profitTextField.floatValue
+        }
+        
+        guard jewelImage.code.code > 0 else { return }
+        guard let imageURL = jewelImage.codeRemovedURL,
+            let image = NSImage(contentsOf: imageURL) else {
+                return
+        }
+        
+        // Annotate image
+        let annotateOp = ImageAnnotateOperation(text: jewelImage.code.displayCode,
+                                                color: jewelImage.code.color,
+                                                position: jewelImage.code.position)
+        annotateOp.inputImage = image
+        
+        // Save image to cache. Then save the url in JewelImage
+        let saveToCacheOp = SaveImageOperation()
+        saveToCacheOp.addDependency(annotateOp)
+        saveToCacheOp.completionBlock = {
+            jewelImage.annotatedURL = saveToCacheOp.imageURL
+        }
+        
+        // Resize Saved Image
+        let resizeOp = ImageResizeOperation(maxDimension: JewelImageDetailsViewController.imageMaxDimension)
+        resizeOp.addDependency(saveToCacheOp)
+        
+        // Display
+        let displayOp = DisplayImageOperation(imageView: editedImageView)
+        displayOp.addDependency(resizeOp)
+        
+        OperationQueue.main.addOperation(displayOp)
+        editedImageQueue.addOperations([resizeOp, saveToCacheOp, annotateOp], waitUntilFinished: false)
+    }
+    
     
 }
 
@@ -96,6 +136,19 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
         ], waitUntilFinished: false)
     }
     
+    func displayImageInEditedImageView(imageURL: URL) {
+        // Resize the image
+        let resizeOp = ImageResizeOperation(maxDimension: JewelImageDetailsViewController.imageMaxDimension)
+        resizeOp.imageURL = imageURL
+        
+        // Display the Image
+        let displayOp = DisplayImageOperation(imageView: editedImageView)
+        displayOp.addDependency(resizeOp)
+        
+        OperationQueue.main.addOperation(displayOp)
+        editedImageQueue.addOperation(resizeOp)
+    }
+    
     func displayObservationsAndEditedImage(resizeOp: ImageResizeOperation,
                                            observations: [VNTextObservation]) {
         guard var jewelImage = self.jewelImage else { return }
@@ -112,16 +165,7 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
         
         // If the code removed url exists, resize and display the image
         if let codeRemovedURL = jewelImage.codeRemovedURL {
-            // Resize the image in codeRemovedURL
-            let editedResizeOp = ImageResizeOperation(maxDimension: JewelImageDetailsViewController.imageMaxDimension)
-            editedResizeOp.imageURL = codeRemovedURL
-            
-            // Display the image
-            let displayOp = DisplayImageOperation(imageView: editedImageView)
-            displayOp.addDependency(editedResizeOp)
-            
-            OperationQueue.main.addOperation(displayOp)
-            editedImageQueue.addOperation(editedResizeOp)
+            displayImageInEditedImageView(imageURL: codeRemovedURL)
             return
         }
         
@@ -153,9 +197,19 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
                                        waitUntilFinished: false)
     }
     
+    func populateTextFields(with code: JewelCode) {
+        dealerCodeTextField.stringValue = code.originalCode == 0 ? "" : "\(code.originalCode)"
+        multiplierTextField.stringValue = code.multiplier == 0 ? "" : "\(code.multiplier)"
+        profitTextField.stringValue = code.profit == 0 ? "" : "\(code.profit)"
+        
+        retailerCodeTextField.stringValue = code.retailerCode == 0 ? "" : "\(code.retailerCode)"
+    }
+    
     func didSelect(_ jewelImage: JewelImageProtocol) {
         self.jewelImage = jewelImage
         annotationView.textObservations = []
+        
+        populateTextFields(with: jewelImage.code)
         
         originalImageQueue.cancelAllOperations()
         editedImageQueue.cancelAllOperations()
@@ -167,6 +221,11 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
         
         defer {
             originalImageQueue.addOperation(resizeOp)
+        }
+        
+        if let annotatedURL = jewelImage.annotatedURL {
+            displayImageInEditedImageView(imageURL: annotatedURL)
+            return
         }
         
         if let observations = jewelImage.selectedTextObservations {

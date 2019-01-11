@@ -107,3 +107,10 @@ extension JewelImageStripViewController: NSCollectionViewDelegate {
         delegate?.didSelect(jewelImage)
     }
 }
+
+extension JewelImageStripViewController: JewelImageDetailsViewControllerDelegate {
+    func moveNext() {
+        collectionView.reloadItems(at: collectionView.selectionIndexPaths)
+        collectionView.moveDown(self)
+    }
+}

@@ -65,6 +65,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
+                                        <menuItem title="Export" keyEquivalent="E" id="Ogz-wL-2le">
+                                            <connections>
+                                                <action selector="exportImages:" target="Ady-hI-5gd" id="iev-Yc-Tu5"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
                                         <menuItem title="Page Setup…" keyEquivalent="P" id="qIS-W8-SiK">
                                             <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
@@ -303,21 +308,33 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Format" id="GEO-Iw-cKr">
                                     <items>
-                                        <menuItem title="Postion" id="H27-If-ETb">
+                                        <menuItem title="Position" id="H27-If-ETb">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" id="O4H-6l-XH8">
+                                            <menu key="submenu" title="Position" id="O4H-6l-XH8">
                                                 <items>
                                                     <menuItem title="Top Left" id="o4W-wq-qRz">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="changePositionMenuClicked:" target="Ady-hI-5gd" id="eSR-Wt-67M"/>
+                                                        </connections>
                                                     </menuItem>
-                                                    <menuItem title="Top Right" id="F4M-Li-9Y9">
+                                                    <menuItem title="Top Right" state="on" id="F4M-Li-9Y9">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="changePositionMenuClicked:" target="Ady-hI-5gd" id="KcO-Je-fHf"/>
+                                                        </connections>
                                                     </menuItem>
                                                     <menuItem title="Bottom Left" id="nh3-wz-hVb">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="changePositionMenuClicked:" target="Ady-hI-5gd" id="MBx-AP-zAC"/>
+                                                        </connections>
                                                     </menuItem>
                                                     <menuItem title="Bottom Right" id="5JA-kF-DcZ">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="changePositionMenuClicked:" target="Ady-hI-5gd" id="VHA-Xp-t5v"/>
+                                                        </connections>
                                                     </menuItem>
                                                 </items>
                                             </menu>
@@ -328,9 +345,15 @@
                                                 <items>
                                                     <menuItem title="Light" id="OX1-KZ-TBf">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="changeTextColorMenuClicked:" target="Ady-hI-5gd" id="uTY-Vk-lx9"/>
+                                                        </connections>
                                                     </menuItem>
                                                     <menuItem title="Dark" id="akz-ag-syG">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="changeTextColorMenuClicked:" target="Ady-hI-5gd" id="5NV-It-c4z"/>
+                                                        </connections>
                                                     </menuItem>
                                                 </items>
                                             </menu>

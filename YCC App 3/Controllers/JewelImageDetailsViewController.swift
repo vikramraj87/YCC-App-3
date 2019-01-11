@@ -9,7 +9,12 @@
 import Cocoa
 import Vision
 
+protocol JewelImageDetailsViewControllerDelegate: class {
+    func moveNext()
+}
+
 class JewelImageDetailsViewController: NSViewController {
+    
     @IBOutlet var originalImageView: NSImageView!
     @IBOutlet var editedImageView: NSImageView!
     @IBOutlet var annotationView: AnnotationView!
@@ -23,11 +28,13 @@ class JewelImageDetailsViewController: NSViewController {
     
     var jewelImage: JewelImageProtocol?
     
+    weak var delegate: JewelImageDetailsViewControllerDelegate?
+    
     let originalImageQueue: OperationQueue = .serialQueue()
     let editedImageQueue: OperationQueue = .serialQueue()
     
     static let imageMaxDimension: CGFloat = 800.0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +48,9 @@ class JewelImageDetailsViewController: NSViewController {
     @IBAction func addCaption(_ sender: Any) {
         guard var jewelImage = jewelImage else { return }
         
+        jewelImage.code.position = (parent as! JewelImageImportViewController).currentSelectedCodePosition
+        jewelImage.code.color = (parent as! JewelImageImportViewController).currentSelectCodeColor
+        
         let retailerCode = retailerCodeTextField.integerValue
         
         if retailerCode != 0 {
@@ -53,14 +63,14 @@ class JewelImageDetailsViewController: NSViewController {
             jewelImage.code.profit = profitTextField.floatValue
         }
         
-        guard jewelImage.code.code > 0 else { return }
+        let caption = jewelImage.code.code > 0 ? jewelImage.code.displayCode : ""
         guard let imageURL = jewelImage.codeRemovedURL,
             let image = NSImage(contentsOf: imageURL) else {
                 return
         }
         
         // Annotate image
-        let annotateOp = ImageAnnotateOperation(text: jewelImage.code.displayCode,
+        let annotateOp = ImageAnnotateOperation(text: caption,
                                                 color: jewelImage.code.color,
                                                 position: jewelImage.code.position)
         annotateOp.inputImage = image
@@ -84,7 +94,24 @@ class JewelImageDetailsViewController: NSViewController {
         editedImageQueue.addOperations([resizeOp, saveToCacheOp, annotateOp], waitUntilFinished: false)
     }
     
+    @IBAction func confirm(_ sender: Any) {
+        guard var jewelImage = jewelImage else { return }
+        
+        guard jewelImage.annotatedURL != nil else { return }
+        
+        jewelImage.state = .whiteListed
+        
+        delegate?.moveNext()
+        
+    }
     
+    @IBAction func blackList(_ sender: Any) {
+        guard var jewelImage = jewelImage else { return }
+        
+        jewelImage.state = .blackListed
+        
+        delegate?.moveNext()
+    }
 }
 
 extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate {
@@ -163,6 +190,12 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
         }
         OperationQueue.main.addOperation(origDisplayOp)
         
+        // If the annotated url exists, resize and display the uimage
+        if let annotatedURL = jewelImage.annotatedURL {
+            displayImageInEditedImageView(imageURL: annotatedURL)
+            return
+        }
+        
         // If the code removed url exists, resize and display the image
         if let codeRemovedURL = jewelImage.codeRemovedURL {
             displayImageInEditedImageView(imageURL: codeRemovedURL)
@@ -199,7 +232,10 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
     
     func populateTextFields(with code: JewelCode) {
         dealerCodeTextField.stringValue = code.originalCode == 0 ? "" : "\(code.originalCode)"
-        multiplierTextField.stringValue = code.multiplier == 0 ? "" : "\(code.multiplier)"
+        if code.multiplier != 0 {
+            multiplierTextField.stringValue = "\(code.multiplier)"
+        }
+        
         profitTextField.stringValue = code.profit == 0 ? "" : "\(code.profit)"
         
         retailerCodeTextField.stringValue = code.retailerCode == 0 ? "" : "\(code.retailerCode)"
@@ -210,6 +246,7 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
         annotationView.textObservations = []
         
         populateTextFields(with: jewelImage.code)
+        dealerCodeTextField.becomeFirstResponder()
         
         originalImageQueue.cancelAllOperations()
         editedImageQueue.cancelAllOperations()
@@ -221,11 +258,6 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
         
         defer {
             originalImageQueue.addOperation(resizeOp)
-        }
-        
-        if let annotatedURL = jewelImage.annotatedURL {
-            displayImageInEditedImageView(imageURL: annotatedURL)
-            return
         }
         
         if let observations = jewelImage.selectedTextObservations {
@@ -248,4 +280,6 @@ extension JewelImageDetailsViewController: AnnotationViewDelegate {
         removeCodeAndDisplay(observations: newObservations)
     }
 }
+
+
 

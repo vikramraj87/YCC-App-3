@@ -17,8 +17,7 @@ import Foundation
 
 enum JewelImageState {
     case notReviewed
-    case importCancelled
-    case codeRemovalUnsuccessful
-    case codeRemovalSuccessful
+    case blackListed
+    case whiteListed
     case exported
 }

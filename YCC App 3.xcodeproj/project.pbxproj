@@ -22,6 +22,7 @@
 		AC16341C21D890BF00EC51FC /* CodePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341421D8853B00EC51FC /* CodePosition.swift */; };
 		AC16341D21D890D200EC51FC /* CodeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341621D8856D00EC51FC /* CodeColor.swift */; };
 		AC16341F21D9981B00EC51FC /* SaveImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16341E21D9981B00EC51FC /* SaveImageOperation.swift */; };
+		AC2E0E2121E57F1D00F091BE /* ExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E0E2021E57F1D00F091BE /* ExportOperation.swift */; };
 		AC3C84EE21CFC15C00C22CA1 /* ImageAnnotateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C84ED21CFC15C00C22CA1 /* ImageAnnotateOperation.swift */; };
 		AC48BF88219FA69500CA1B1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF87219FA69500CA1B1F /* AppDelegate.swift */; };
 		AC48BF8A219FA69500CA1B1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48BF89219FA69500CA1B1F /* ViewController.swift */; };
@@ -81,6 +82,7 @@
 		AC16341621D8856D00EC51FC /* CodeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeColor.swift; sourceTree = "<group>"; };
 		AC16341921D88F9900EC51FC /* JewelCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelCodeTests.swift; sourceTree = "<group>"; };
 		AC16341E21D9981B00EC51FC /* SaveImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageOperation.swift; sourceTree = "<group>"; };
+		AC2E0E2021E57F1D00F091BE /* ExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportOperation.swift; sourceTree = "<group>"; };
 		AC3C84ED21CFC15C00C22CA1 /* ImageAnnotateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAnnotateOperation.swift; sourceTree = "<group>"; };
 		AC48BF84219FA69500CA1B1F /* YCC App 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YCC App 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC48BF87219FA69500CA1B1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				AC14EE8B21BB58A60013E811 /* DisplayImageOperation.swift */,
 				AC3C84ED21CFC15C00C22CA1 /* ImageAnnotateOperation.swift */,
 				AC16341E21D9981B00EC51FC /* SaveImageOperation.swift */,
+				AC2E0E2021E57F1D00F091BE /* ExportOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				AC5A1DC321C1F1DB003680A2 /* OperationQueue+serialQueue.swift in Sources */,
 				ACFA0FF221B4354A0010F400 /* CGRect+Encoded.swift in Sources */,
 				ACEAAB0021A8EA7B0040F09A /* NSSize+aspectRatio.swift in Sources */,
+				AC2E0E2121E57F1D00F091BE /* ExportOperation.swift in Sources */,
 				ACBC862821AE381A001C1ED6 /* NSUserInterfaceIdentifiers.swift in Sources */,
 				ACEAAAFE21A8E9A40040F09A /* NSImageView+imageFrame.swift in Sources */,
 				ACEAAB0221A8EC5B0040F09A /* VNTextObservation+boundingBoxScaled.swift in Sources */,

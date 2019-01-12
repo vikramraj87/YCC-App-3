@@ -73,11 +73,10 @@ class JewelImageImportViewController: NSSplitViewController {
         guard let mainMenu = app.mainMenu else {
             return
         }
+        
         let formatMenuItem = mainMenu.items.filter { $0.title == "Format" }.first!
         let formatMenu = formatMenuItem.submenu!
-        for item in formatMenu.items {
-            print(item.title)
-        }
+        
         positionMenuItem = formatMenu.items.filter { $0.title == "Position" }.first!
         colorMenuItem = formatMenu.items.filter { $0.title == "Text Color" }.first!
     }

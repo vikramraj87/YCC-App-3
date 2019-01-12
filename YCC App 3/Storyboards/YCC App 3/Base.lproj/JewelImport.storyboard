@@ -189,10 +189,10 @@
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="jewel1" id="RC8-l5-9VX"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="19" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zak-NC-P1n">
-                                        <rect key="frame" x="633" y="307" width="140" height="337"/>
+                                        <rect key="frame" x="633" y="287" width="140" height="377"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sqv-Cq-RPZ">
-                                                <rect key="frame" x="0.0" y="315" width="140" height="22"/>
+                                                <rect key="frame" x="0.0" y="355" width="140" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="N3N-p1-stm"/>
                                                 </constraints>
@@ -203,7 +203,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bk9-gq-Adf">
-                                                <rect key="frame" x="0.0" y="274" width="140" height="22"/>
+                                                <rect key="frame" x="0.0" y="314" width="140" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Multiplier" drawsBackground="YES" id="GHb-ff-Dc0">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -211,7 +211,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZxJ-6C-X2M">
-                                                <rect key="frame" x="0.0" y="233" width="140" height="22"/>
+                                                <rect key="frame" x="0.0" y="273" width="140" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Profit" drawsBackground="YES" id="4kh-NK-isR">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -219,7 +219,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xQx-sF-688">
-                                                <rect key="frame" x="-2" y="197" width="144" height="17"/>
+                                                <rect key="frame" x="-2" y="237" width="144" height="17"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="OR" id="ZhE-Oq-dB9">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -227,7 +227,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="inI-Hb-Kfg">
-                                                <rect key="frame" x="0.0" y="156" width="140" height="22"/>
+                                                <rect key="frame" x="0.0" y="196" width="140" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Computed Code" drawsBackground="YES" id="5xg-VQ-Zqh">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -235,7 +235,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hr7-jc-J6E">
-                                                <rect key="frame" x="-6" y="109" width="152" height="32"/>
+                                                <rect key="frame" x="-6" y="149" width="152" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Add Caption" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p6T-Tl-c1A">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -244,6 +244,16 @@
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="addCaption:" target="AsU-SH-MNM" id="RPW-zR-nb8"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7qH-ac-N35">
+                                                <rect key="frame" x="-6" y="109" width="152" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C4l-wZ-uxO">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="refreshAnnotations:" target="AsU-SH-MNM" id="Gfz-5J-dJq"/>
                                                 </connections>
                                             </button>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N1z-H1-0R8">
@@ -280,6 +290,7 @@ DQ
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="ZxJ-6C-X2M" firstAttribute="width" secondItem="Sqv-Cq-RPZ" secondAttribute="width" id="2PO-FL-oax"/>
+                                            <constraint firstItem="7qH-ac-N35" firstAttribute="centerX" secondItem="Sqv-Cq-RPZ" secondAttribute="centerX" id="3vQ-cz-g9V"/>
                                             <constraint firstItem="g7D-yu-IuA" firstAttribute="centerX" secondItem="Sqv-Cq-RPZ" secondAttribute="centerX" id="Hd6-uF-7jJ"/>
                                             <constraint firstItem="inI-Hb-Kfg" firstAttribute="width" secondItem="Sqv-Cq-RPZ" secondAttribute="width" id="SUm-qO-Ech"/>
                                             <constraint firstItem="MoZ-TN-DIB" firstAttribute="centerX" secondItem="Sqv-Cq-RPZ" secondAttribute="centerX" id="aDQ-wn-6KB"/>
@@ -297,8 +308,10 @@ DQ
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>

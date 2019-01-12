@@ -112,6 +112,20 @@ class JewelImageDetailsViewController: NSViewController {
         
         delegate?.moveNext()
     }
+    
+    @IBAction func refreshAnnotations(_ sender: Any) {
+        guard let jewelImage = jewelImage else { return }
+        
+        originalImageQueue.cancelAllOperations()
+        editedImageQueue.cancelAllOperations()
+        
+        let resizeOp = ImageResizeOperation(maxDimension: JewelImageDetailsViewController.imageMaxDimension)
+        resizeOp.imageURL = jewelImage.originalURL
+        
+        detectRemoveCodeAndDisplay(resizeOp: resizeOp)
+        
+        originalImageQueue.addOperation(resizeOp)
+    }
 }
 
 extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate {

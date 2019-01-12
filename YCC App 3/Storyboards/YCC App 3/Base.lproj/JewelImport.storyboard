@@ -360,6 +360,7 @@ DQ
                     </view>
                     <connections>
                         <outlet property="annotationView" destination="C3q-pS-8Ms" id="cqm-pR-Jdq"/>
+                        <outlet property="confirmButton" destination="MoZ-TN-DIB" id="pny-E0-bYP"/>
                         <outlet property="dealerCodeTextField" destination="Sqv-Cq-RPZ" id="0GV-c2-KOS"/>
                         <outlet property="editedImageView" destination="OS5-6L-5Wc" id="dDh-Tt-XuH"/>
                         <outlet property="multiplierTextField" destination="Bk9-gq-Adf" id="9P0-8V-bpo"/>

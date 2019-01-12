@@ -24,6 +24,9 @@ class JewelImageDetailsViewController: NSViewController {
     @IBOutlet var profitTextField: NSTextField!
     
     @IBOutlet var retailerCodeTextField: NSTextField!
+    
+    @IBOutlet var confirmButton: NSButton!
+    
     let codeRemovalService = CodeRemovalService(host: "127.0.0.1", port: 5000)
     
     var jewelImage: JewelImageProtocol?
@@ -43,6 +46,8 @@ class JewelImageDetailsViewController: NSViewController {
         
         originalImageView.image = nil
         editedImageView.image = nil
+        
+        confirmButton.isEnabled = false
     }
     
     @IBAction func addCaption(_ sender: Any) {
@@ -88,6 +93,11 @@ class JewelImageDetailsViewController: NSViewController {
         
         // Display
         let displayOp = DisplayImageOperation(imageView: editedImageView)
+        displayOp.completionBlock = {
+            DispatchQueue.main.async { [weak self] in
+                self?.confirmButton.isEnabled = true
+            }
+        }
         displayOp.addDependency(resizeOp)
         
         OperationQueue.main.addOperation(displayOp)
@@ -115,6 +125,8 @@ class JewelImageDetailsViewController: NSViewController {
     
     @IBAction func refreshAnnotations(_ sender: Any) {
         guard let jewelImage = jewelImage else { return }
+        
+        confirmButton.isEnabled = false
         
         originalImageQueue.cancelAllOperations()
         editedImageQueue.cancelAllOperations()
@@ -258,6 +270,8 @@ extension JewelImageDetailsViewController: JewelImageStripViewControllerDelegate
     func didSelect(_ jewelImage: JewelImageProtocol) {
         self.jewelImage = jewelImage
         annotationView.textObservations = []
+        
+        confirmButton.isEnabled = false
         
         populateTextFields(with: jewelImage.code)
         dealerCodeTextField.becomeFirstResponder()
